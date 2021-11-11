@@ -23,3 +23,4 @@
 24^Opening of the Kiel Canal^GB^1895^Birt Acres^0
 25^The Oxford and Cambridge University Boat Race^GB^1895^Birt Acres^0
 26^The Messers. Lumière at Cards^US^1896^Louis Lumière^0
+27^tHd Messers. Lumière at Cards^US^1896^Louis Lumière^0
