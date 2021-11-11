@@ -1,0 +1,25 @@
+1^Carmencita^US^1894^William K.L. Dickson^0
+2^Le clown et ses chiens^FR^1892^ Émile Reynaud^0
+3^Pauvre Pierrot^FR^1892^RO^Émile Reynaud^0
+4^Un bon bock^FR^1892^ Émile Reynaud^0
+5^Blacksmithing Scene^US^1893^William K.L. Dickson^0
+6^Chinese Opium Den^US^1894^William K.L. Dickson^0
+7^Corbett and Courtney Before the Kinetograph^US^1894^William K.L. Dickson^0
+8^Edison Kinetoscopic Record of a Sneeze^US^1894^William K.L. Dickson^0
+9^Miss Jerry^HU^1894^Alexander Black^0
+10^Leaving the Factory^US^1895^Louis Lumière^0
+11^Akrobatisches Potpourri^DE^1895^Max Skladanowsky^0
+12^The Arrival of a Train^US^1896^Auguste Lumière^0
+13^The Photographical Congress Arrives in Lyon^US^1895^Louis Lumière^0
+14^The Waterer Watered^US^1895^Louis Lumière^0
+15^Autour d'une cabine^FR^1894^Émile Reynaud^0
+16^Boat Leaving the Port^US^1895^Louis Lumière^0
+17^Italienischer Bauerntanz^DE^1895^Max Skladanowsky^0
+18^Das boxende Känguruh^DE^1895^Max Skladanowsky^0
+19^The Clown Barber^GB^1898^James Williamson^0
+20^The Derby 1895^GB^1895^Birt Acres^0
+22^Blacksmith Scene^US^1895^Louis Lumière^0
+23^Baignade en mer^FR^1895^Louis Lumière^0
+24^Opening of the Kiel Canal^GB^1895^Birt Acres^0
+25^The Oxford and Cambridge University Boat Race^GB^1895^Birt Acres^0
+26^The Messers. Lumière at Cards^US^1896^Louis Lumière^0
