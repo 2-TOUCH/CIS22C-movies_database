@@ -1,7 +1,7 @@
 1^Carmencita^US^1894^William K.L. Dickson^0
 2^Le clown et ses chiens^FR^1892^ Émile Reynaud^0
-3^Pauvre Pierrot^FR^1892^RO^Émile Reynaud^0
-4^Un bon bock^FR^1892^ Émile Reynaud^0
+3^Pauvre Pierrot^FR^1892^Émile Reynaud^0
+4^Un bon bock^FR^1892^Émile Reynaud^0
 5^Blacksmithing Scene^US^1893^William K.L. Dickson^0
 6^Chinese Opium Den^US^1894^William K.L. Dickson^0
 7^Corbett and Courtney Before the Kinetograph^US^1894^William K.L. Dickson^0
