@@ -3,33 +3,31 @@
 #define _BINARY_NODE
 #include "Movie.h"
 
-class BinaryNode
+class Node
 {
 private:
 	Movie    item;         // Data portion
-	BinaryNode* leftPtr;		// Pointer to left child
-	BinaryNode* rightPtr;		// Pointer to right child
+	Node* leftPtr;		// Pointer to left child
+	Node* rightPtr;		// Pointer to right child
 
 public:
 	// constructors
-	BinaryNode(const Movie& anItem) { item = anItem; leftPtr = 0; rightPtr = 0; }
-	BinaryNode(const Movie& anItem,
-		BinaryNode* left,
-		BinaryNode* right) {
+	Node(const Movie& anItem) { item = anItem; leftPtr = 0; rightPtr = 0; }
+	Node(const Movie& anItem,
+		Node* left,
+		Node* right) {
 		item = anItem; leftPtr = left; rightPtr = right;
 	}
 	// setters
 	void setItem(const Movie& anItem) { item = anItem; }
-	void setLeftPtr(BinaryNode* left) { leftPtr = left; }
-	void setRightPtr(BinaryNode* right) { rightPtr = right; }
+	void setLeftPtr(Node* left) { leftPtr = left; }
+	void setRightPtr(Node* right) { rightPtr = right; }
 
 	// getters
 	Movie getItem() const { return item; }
-	BinaryNode* getLeftPtr() const { return leftPtr; }
-	BinaryNode* getRightPtr() const { return rightPtr; }
+	Node* getLeftPtr() const { return leftPtr; }
+	Node* getRightPtr() const { return rightPtr; }
 
-	// other functions
-	bool isLeaf() const { return (leftPtr == 0 && rightPtr == 0); }
 
 };
 
