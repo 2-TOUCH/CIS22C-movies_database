@@ -31,6 +31,7 @@ public:
     std::string getDirector() const { return director; }
     int getYear() const { return year; }
     bool getIsAdult() const { return isAdult; }
+    bool operator > (const Movie& s1) const { return title < s1.title; }
 
     void vDisplay(std::ostream& os) const {
         os << "ID: " << id << std::endl;
