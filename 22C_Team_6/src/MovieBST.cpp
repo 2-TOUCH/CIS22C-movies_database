@@ -15,10 +15,6 @@ BinaryTree::BinaryTree()
     root = NULL;
     count = 0;
 }
-/**~*~*
-   This function calls a recursive function to traverse the
-   tree in postorder (the wrapper function)
-*~**/
 
 
 /**~*~*
@@ -30,6 +26,40 @@ void BinaryTree::inOrder() const
     _inOrder(root);
 }
 
+Node* BinaryTree::_insert(Node* nodePtr, Node* newNode)
+{
+
+    Node* pWalk = nodePtr;
+
+    if (nodePtr)
+    {
+        nodePtr = newNode;
+        return nodePtr;
+    }
+    else
+    {
+        if (pWalk->getItem() > newNode->getItem())
+        {
+            if (!pWalk->getLeftPtr())
+            {
+                pWalk->setLeftPtr(newNode);
+            }
+            else
+                _insert(pWalk->getLeftPtr(), newNode);
+        }
+        else
+        {
+            if (pWalk->getRightPtr())
+            {
+                pWalk->setRightPtr(newNode);
+            }
+            else
+                _insert(pWalk->getRightPtr(), newNode);
+        }
+        return nodePtr;
+    }
+}
+
 /**~*~*
    Inorder Traversal of the Binary Tree:
    Left-Root-Right (recursive)
@@ -38,53 +68,26 @@ void BinaryTree::_inOrder(Node* root) const
 {
     if (root)
     {
-        _inOrder(root->left);
-        cout << root->data.num << " ";
-        _inOrder(root->right);
+        _inOrder(root->getLeftPtr());
+        cout << root->getItem().getTitle()<< " ";
+        _inOrder(root->getRightPtr());
     }
 }
 
 /**~*~*
    Insert data into a random Binary Tree
 *~**/
-void BinaryTree::insert(Data dataIn)
+bool BinaryTree::insert(Movie dataIn)
 {
-    Node* newNode;
-    Node* pWalk;
-    Node* parent;
-    int  rand_num;
-
-    // allocate the new node
-    newNode = new Node;
-    newNode->data = dataIn;
-    newNode->left = NULL;
-    newNode->right = NULL;
-
-    // find a "random" parent
-    if (!root) // tree is empty
-        root = newNode;
-    else
-    {
-        parent = NULL; // root does not have a parent
-        pWalk = root;
-        while (pWalk) {
-            parent = pWalk;
-            rand_num = rand() % 100;
-            if (rand_num % 2) // if odd - take left
-                pWalk = pWalk->left;
-            else
-                pWalk = pWalk->right;
-        }
-
-        // insert the new node
-        if (!parent->left) // no left child
-            parent->left = newNode;
-        else
-            parent->right = newNode;
-    }
-
-    count++;
+    Node* newNodePtr = new Node(dataIn);
+    root = _insert(root, newNodePtr);
+    return true;
 }
+
+
+
+
+
 
 /**~*~*
    Destructor
@@ -103,12 +106,9 @@ void BinaryTree::_destroy(Node* root)
 {
     if (root)
     {
-        _destroy(root->left);
-        _destroy(root->right);
+        _destroy(root->getLeftPtr());
+        _destroy(root->getRightPtr());
         delete root;
     }
 }
-
-
-
 
