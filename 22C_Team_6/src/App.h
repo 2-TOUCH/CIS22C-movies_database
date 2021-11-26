@@ -25,6 +25,7 @@ private:
     void processAddCmd();
     void processDeleteByKeyCmd();
     void processUndoDeleteCmd();
+    void processDisplayAllKeyCmd();
 
     void resetMovieDB() { movieDB = MovieDB(); }
 

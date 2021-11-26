@@ -6,6 +6,7 @@
 
 #include "Movie.h"
 #include "HashTable.h"
+#include "MovieBST.h"
 
 uint64_t movieIDHasher(const MovieID& id);
 
@@ -25,11 +26,13 @@ public:
     void addMovie(const Movie& movie);
     bool findMovieByID(const MovieID& id, Movie& movie);
     std::vector<Movie> findMovieByTitle(const std::string& title);
-    std::vector<Movie> listMovieSortedByTitle();
+    void listMovieSortedByTitle();
     bool deleteMovieByID(const MovieID& id, Movie& deletedMovie);
 
     void reserveHashBuckets(size_t buckets);
     MovieDBDSStats getDataStructureStats() const;
 private:
     HashTable<MovieID, Movie> hashTable;
+    BinaryTree BST; 
+
 };

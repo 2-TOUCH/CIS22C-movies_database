@@ -31,14 +31,14 @@ Node* BinaryTree::_insert(Node* nodePtr, Node* newNode)
 
     Node* pWalk = nodePtr;
 
-    if (nodePtr)
+    if (!nodePtr)
     {
         nodePtr = newNode;
         return nodePtr;
     }
     else
     {
-        if (pWalk->getItem() > newNode->getItem())
+        if (pWalk->getItem().getTitle() > newNode->getItem().getTitle())
         {
             if (!pWalk->getLeftPtr())
             {
@@ -49,7 +49,7 @@ Node* BinaryTree::_insert(Node* nodePtr, Node* newNode)
         }
         else
         {
-            if (pWalk->getRightPtr())
+            if(!pWalk->getRightPtr())
             {
                 pWalk->setRightPtr(newNode);
             }
@@ -69,7 +69,7 @@ void BinaryTree::_inOrder(Node* root) const
     if (root)
     {
         _inOrder(root->getLeftPtr());
-        cout << root->getItem().getTitle()<< " ";
+        cout << root->getItem().getTitle()<< "\n";
         _inOrder(root->getRightPtr());
     }
 }
@@ -83,10 +83,6 @@ bool BinaryTree::insert(Movie dataIn)
     root = _insert(root, newNodePtr);
     return true;
 }
-
-
-
-
 
 
 /**~*~*

@@ -21,6 +21,12 @@ int App::run() {
         case 'u':
             processUndoDeleteCmd();
             break;
+/*  	case 's':
+	    processSearchBySecKeyCmd();
+	    break;*/
+        case 'a':
+	    processDisplayAllKeyCmd();
+	    break;
         default:
             std::cout << "Invalid choice" << std::endl;
         }
@@ -32,6 +38,7 @@ void App::printMenu() {
     std::cout << "Load file: l" << std::endl;
     std::cout << "Search movie by primary key: p" << std::endl;
     std::cout << "Delete by primary key: d" << std::endl;
+    std::cout << "List all Movies: a" << std::endl;
     std::cout << "Undo movie deletion: u" << std::endl;
 }
 
@@ -53,7 +60,7 @@ void App::processLoadFileCmd() {
     }
 
     try {
-        resetMovieDB();
+        //resetMovieDB();
         FileLoader fileLoader(std::move(file));
         fileLoader.load(movieDB);
     } catch (std::exception& e) {
@@ -122,3 +129,27 @@ void App::processUndoDeleteCmd() {
     std::cout << "Movie delete undone: " << std::endl;
     movie.vDisplay(std::cout);
 }
+/*
+void App::processSearchBySecKeyCmd(){
+    
+    std::cout << "Input Secondary key:";
+    std::string key;
+    std::getline(std::cin, key);
+    
+    Movie movie;
+    bool found = movieDB.findMovieByID(key, movie);
+    if (found) {
+        movie.vDisplay(std::cout);
+    } else {
+        std::cout << "Movie not found" << std::endl;
+    }
+
+
+
+}
+*/
+void App::processDisplayAllKeyCmd(){
+    movieDB.listMovieSortedByTitle();
+}
+
+

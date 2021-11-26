@@ -2,8 +2,7 @@
 #ifndef BINARY_TREE_H
 #define BINARY_TREE_H
 #include "Movie.h"
-#include "Node.h"
-
+#include "BSTNode.h"
 
 class BinaryTree
 {

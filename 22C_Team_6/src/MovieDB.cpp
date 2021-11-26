@@ -29,6 +29,7 @@ MovieDB::~MovieDB() {
 
 void MovieDB::addMovie(const Movie& movie) {
     hashTable.add(movie.getID(), movie);
+    BST.insert(movie);
     if (hashTable.getLoadFactor() > 0.75) {
         hashTable.rehash(hashTable.getBucketsCount() * 2);
     }
@@ -42,8 +43,13 @@ bool MovieDB::findMovieByID(const MovieID& id, Movie& movie) {
     return hashTable.find(id, movie);
 }
 
+
 void MovieDB::reserveHashBuckets(size_t buckets) {
     hashTable.rehash(buckets);
+}
+void MovieDB::listMovieSortedByTitle()
+{
+  BST.inOrder();
 }
 
 MovieDBDSStats MovieDB::getDataStructureStats() const {
