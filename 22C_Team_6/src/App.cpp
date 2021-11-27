@@ -1,5 +1,6 @@
 #include "App.h"
 #include <iostream>
+#include <vector>
 
 int App::run() {
     bool quit = false;
@@ -149,7 +150,10 @@ void App::processSearchBySecKeyCmd(){
 }
 */
 void App::processDisplayAllKeyCmd(){
-    movieDB.listMovieSortedByTitle();
+   std::vector<Movie> list; 
+   list = movieDB.listMovieSortedByTitle();
+   for(int i = 0; i < list.size(); i++)
+    std::cout << list[i];
 }
 
 

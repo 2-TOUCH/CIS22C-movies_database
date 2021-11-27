@@ -1,4 +1,5 @@
 // Specification file for the BinaryTree class
+#include <vector>
 #ifndef BINARY_TREE_H
 #define BINARY_TREE_H
 #include "Movie.h"
@@ -21,16 +22,16 @@ public:
 
     // Binary Tree operations
     bool insert(Movie dataIn);
-    void inOrder() const;
+//    bool delete(Movie dataIn);
+    std::vector<Movie> inOrder()const;
     void preOrder() const;
     void postOrder() const;
     int getCount() const { return count; }
     bool isEmpty() const { return count == 0; }
 
-
 private:
     Node* _insert(Node* nodePtr, Node* newNode);
-    void _inOrder(Node* root) const;
+    void _inOrder(Node* root, std::vector<Movie>&) const;
     void _destroy(Node* root);
 };
 #endif

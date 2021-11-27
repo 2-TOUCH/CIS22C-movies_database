@@ -1,7 +1,6 @@
 // Implementation file for the BinaryTree class
 #include <iostream>  // For cout and NULL
 
-
 #include "movieBST.h"
 #include <cstdlib>   // For rand()
 #include <ctime>     // For time()
@@ -21,9 +20,11 @@ BinaryTree::BinaryTree()
    This function calls a recursive function to traverse the
    tree in inorder (the wrapper function)
 *~**/
-void BinaryTree::inOrder() const
+std::vector<Movie> BinaryTree::inOrder() const
 {
-    _inOrder(root);
+    std::vector<Movie> inOrdList;
+    _inOrder(root,inOrdList);
+    return inOrdList;
 }
 
 Node* BinaryTree::_insert(Node* nodePtr, Node* newNode)
@@ -64,13 +65,13 @@ Node* BinaryTree::_insert(Node* nodePtr, Node* newNode)
    Inorder Traversal of the Binary Tree:
    Left-Root-Right (recursive)
 *~**/
-void BinaryTree::_inOrder(Node* root) const
+void BinaryTree::_inOrder(Node* root, std::vector<Movie>& list) const
 {
     if (root)
     {
-        _inOrder(root->getLeftPtr());
-        cout << root->getItem().getTitle()<< "\n";
-        _inOrder(root->getRightPtr());
+        _inOrder(root->getLeftPtr(), list);
+        list.push_back(root->getItem());
+        _inOrder(root->getRightPtr(), list);
     }
 }
 
@@ -84,6 +85,13 @@ bool BinaryTree::insert(Movie dataIn)
     return true;
 }
 
+/*bool BinaryTree::delete(Movie dataIn)
+{
+   Node* pWalk = root;
+   if(!pWalk)
+    return false;
+}
+*/
 
 /**~*~*
    Destructor

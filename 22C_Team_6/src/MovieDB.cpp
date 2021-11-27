@@ -36,6 +36,7 @@ void MovieDB::addMovie(const Movie& movie) {
 }
 
 bool MovieDB::deleteMovieByID(const MovieID& id, Movie& deletedMovie) {
+    //BST.
     return hashTable.remove(id, deletedMovie);
 }
 
@@ -47,9 +48,10 @@ bool MovieDB::findMovieByID(const MovieID& id, Movie& movie) {
 void MovieDB::reserveHashBuckets(size_t buckets) {
     hashTable.rehash(buckets);
 }
-void MovieDB::listMovieSortedByTitle()
+std::vector<Movie> MovieDB::listMovieSortedByTitle()
 {
-  BST.inOrder();
+  return BST.inOrder();
+  
 }
 
 MovieDBDSStats MovieDB::getDataStructureStats() const {

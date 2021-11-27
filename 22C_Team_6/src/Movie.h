@@ -11,6 +11,10 @@
 
 using MovieID = std::string;
 
+class Movie; //Forward Decleration
+
+std::ostream&operator << (std::ostream&, const Movie&);
+
 class Movie {
 public:
     Movie(const MovieID& id, const std::string& title, const std::string& lang,
@@ -32,7 +36,7 @@ public:
     int getYear() const { return year; }
     bool getIsAdult() const { return isAdult; }
     bool operator > (const Movie& s1) const { return title < s1.title; }
-
+    friend std::ostream &operator << (std::ostream& os, const Movie& s1){os << s1.title << std::endl; return os;}
     void vDisplay(std::ostream& os) const {
         os << "ID: " << id << std::endl;
         os << "Title: " << title << std::endl;
