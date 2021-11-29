@@ -38,7 +38,7 @@ public:
             it = remove(it);
         }
         delete tail;
-     }
+    }
 
     /**
      * Copy constructor
@@ -114,14 +114,13 @@ public:
      * @param it the iterator point to remove
      */
     Iterator remove(const Iterator& it) {
-        
         auto node = it.node;
         auto next = node->next;
         auto prev = node->prev;
 
         prev->next = next;
         next->prev = prev;
-       
+        
         delete node;
 
         size_--;
@@ -168,7 +167,7 @@ public:
         return size_ == 0;
     }
 private:
-    Node* head = new Node;
-    Node* tail = new Node;
+    Node* head;
+    Node* tail;
     size_t size_;
 };

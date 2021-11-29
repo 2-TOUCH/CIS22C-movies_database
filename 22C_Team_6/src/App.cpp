@@ -4,6 +4,8 @@
 
 int App::run() {
     bool quit = false;
+    std::cout << "*****Welcome to Movies Database      *****" << std::endl;
+    std::cout << "*****Abdullah, Arnesh, Sunho, Ulysses*****" << std::endl;
     while(!quit) {
         printMenu();
         char choice;
@@ -28,6 +30,9 @@ int App::run() {
         case 'a':
 	    processDisplayAllKeyCmd();
 	    break;
+        case 'e':
+            quit = true;
+	     break;
         default:
             std::cout << "Invalid choice" << std::endl;
         }
@@ -41,6 +46,7 @@ void App::printMenu() {
     std::cout << "Delete by primary key: d" << std::endl;
     std::cout << "List all Movies: a" << std::endl;
     std::cout << "Undo movie deletion: u" << std::endl;
+    std::cout << "Exit: e" << std::endl;
 }
 
 void App::processAddCmd() {
@@ -144,11 +150,10 @@ void App::processSearchBySecKeyCmd(){
     } else {
         std::cout << "Movie not found" << std::endl;
     }
-
-
-
 }
 */
+
+
 void App::processDisplayAllKeyCmd(){
    std::vector<Movie> list; 
    list = movieDB.listMovieSortedByTitle();

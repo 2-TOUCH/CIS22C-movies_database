@@ -108,11 +108,11 @@ BinaryTree::~BinaryTree()
  */
 void BinaryTree::_destroy(Node* root)
 {
-    if (root)
-    {
-        _destroy(root->getLeftPtr());
-        _destroy(root->getRightPtr());
-        delete root;
-    }
+    if (!root)
+     return;
+    
+    _destroy(root->getLeftPtr());
+    _destroy(root->getRightPtr());
+    delete root;
 }
 

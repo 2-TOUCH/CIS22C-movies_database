@@ -29,7 +29,8 @@ public:
      * Destructor
      */
     ~HashTable() {
-        delete buckets;
+        if(bucketsCount > 1)
+	   delete buckets;
     }
 
     /**

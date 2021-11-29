@@ -73,6 +73,6 @@ public:
     MovieDBDSStats getDataStructureStats() const;
 private:
     HashTable<MovieID, Movie> hashTable;
-    BinaryTree BST; 
+    BinaryTree BST;
 
 };
