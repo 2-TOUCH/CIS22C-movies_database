@@ -49,9 +49,8 @@ void MovieDB::reserveHashBuckets(size_t buckets) {
     hashTable.rehash(buckets);
 }
 
-void MovieDB::listMovieSortedByTitle(){
+std::vector<Movie> MovieDB::listMovieSortedByTitle(){
   return BST.inOrder();
-  
 }
 
 std::vector<Movie> MovieDB::getAllMovies() {
