@@ -1,7 +1,5 @@
-// Specification file for the BinaryTree class
+#pragma once
 #include <vector>
-#ifndef BINARY_TREE_H
-#define BINARY_TREE_H
 #include "Movie.h"
 #include "BSTNode.h"
 
@@ -34,4 +32,3 @@ private:
     void _inOrder(Node* root, std::vector<Movie>&) const;
     void _destroy(Node* root);
 };
-#endif

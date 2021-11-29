@@ -1,10 +1,4 @@
-// Specification file for the Movie class
-// Written By: A. Student
-// Changed By:
-// IDE: Xcode
-
-#ifndef MOVIES_H
-#define MOVIES_H
+#pragma once
 
 #include <string>
 #include <iostream>
@@ -22,6 +16,9 @@ public:
                                  year(year), director(director), isAdult(isAdult) {}
     Movie() = default;
 
+    /**~*~*
+     * Setters
+    *~**/
     void setID(const MovieID& id) { this->id = id;}
     void setTitle(const std::string& title) { this->title = title;}
     void setLang(const std::string& lang) { this->lang = lang;}
@@ -29,6 +26,9 @@ public:
     void setYear(int year) { this->year = year;    }
     void setIsAdult(bool isAdult) { this->isAdult = isAdult; }
 
+    /**~*~*
+     * Getters
+    *~**/
     MovieID getID() const { return id; }
     std::string getTitle() const { return title; }
     std::string getLang() const { return lang; }
@@ -54,4 +54,3 @@ private:
     bool isAdult{false};
 };
 
-#endif

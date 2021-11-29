@@ -7,13 +7,19 @@
 #include "FileLoader.h"
 #include "FileWriter.h"
 
+/**~*~*
+ * App class that integrate all the other classes to implement the program
+ * the main responsibility is dealing with user input and output
+*~**/
 class App {
 public:
     App() = default;
     ~App() = default;
 
+    /**~*~*
+     * run the program
+    *~**/
     int run();
-
 private:
     void printMenu();
 

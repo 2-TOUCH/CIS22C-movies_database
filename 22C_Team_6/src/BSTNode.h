@@ -1,6 +1,4 @@
 #pragma once
-#ifndef _BINARY_NODE
-#define _BINARY_NODE
 #include "Movie.h"
 
 class Node
@@ -30,5 +28,3 @@ public:
 
 
 };
-
-#endif 
