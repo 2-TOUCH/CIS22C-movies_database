@@ -6,9 +6,9 @@
 #include <ctime>     // For time()
 using namespace std;
 
-/**~*~*
+/**
  * Constructor
-*~**/
+ */
 BinaryTree::BinaryTree()
 {
     root = NULL;
@@ -16,10 +16,10 @@ BinaryTree::BinaryTree()
 }
 
 
-/**~*~*
+/**
  * This function calls a recursive function to traverse the
  * tree in inorder (the wrapper function)
-*~**/
+ */
 std::vector<Movie> BinaryTree::inOrder() const
 {
     std::vector<Movie> inOrdList;
@@ -61,10 +61,10 @@ Node* BinaryTree::_insert(Node* nodePtr, Node* newNode)
     }
 }
 
-/**~*~*
+/**
  * Inorder Traversal of the Binary Tree:
  * Left-Root-Right (recursive)
-*~**/
+ */
 void BinaryTree::_inOrder(Node* root, std::vector<Movie>& list) const
 {
     if (root)
@@ -75,9 +75,9 @@ void BinaryTree::_inOrder(Node* root, std::vector<Movie>& list) const
     }
 }
 
-/**~*~*
+/**
  * Insert data into a random Binary Tree
-*~**/
+ */
 bool BinaryTree::insert(Movie dataIn)
 {
     Node* newNodePtr = new Node(dataIn);
@@ -93,19 +93,19 @@ bool BinaryTree::insert(Movie dataIn)
 }
 */
 
-/**~*~*
+/**
  * Destructor
  * This function calls a recursive function to delete all nodes in the binary tree
-*~**/
+ */
 BinaryTree::~BinaryTree()
 {
     if (root)
         _destroy(root);
 }
 
-/**~*~*
+/**
  * This function traverses the binary tree in postorder and deletes every node
-*~**/
+ */
 void BinaryTree::_destroy(Node* root)
 {
     if (root)
