@@ -48,10 +48,14 @@ bool MovieDB::findMovieByID(const MovieID& id, Movie& movie) {
 void MovieDB::reserveHashBuckets(size_t buckets) {
     hashTable.rehash(buckets);
 }
-std::vector<Movie> MovieDB::listMovieSortedByTitle()
-{
+
+void MovieDB::listMovieSortedByTitle(){
   return BST.inOrder();
   
+}
+
+std::vector<Movie> MovieDB::getAllMovies() {
+    return hashTable.list();
 }
 
 MovieDBDSStats MovieDB::getDataStructureStats() const {

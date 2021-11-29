@@ -27,6 +27,7 @@ public:
     bool findMovieByID(const MovieID& id, Movie& movie);
     std::vector<Movie> findMovieByTitle(const std::string& title);
     std::vector<Movie> listMovieSortedByTitle();
+    std::vector<Movie> getAllMovies();
     bool deleteMovieByID(const MovieID& id, Movie& deletedMovie);
 
     void reserveHashBuckets(size_t buckets);

@@ -112,6 +112,17 @@ public:
         return true;
     }
 
+    std::vector<Value> list() const {
+        std::vector<Value> result{};
+        for (int i = 0; i < bucketsCount; i++) {
+            auto& bucket = buckets[i];
+            for (auto it = bucket.begin(); it != bucket.end(); ++it) {
+                result.push_back((*it).value);
+            }
+        }
+        return result;
+    }
+
     double getLoadFactor() const {
         return static_cast<double>(filledBuckets) / bucketsCount;
     }
