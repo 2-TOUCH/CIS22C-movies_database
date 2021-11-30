@@ -158,7 +158,8 @@ void App::processDisplayAllKeyCmd(){
    std::vector<Movie> list; 
    list = movieDB.listMovieSortedByTitle();
    for(int i = 0; i < list.size(); i++)
-    std::cout << list[i];
+     if(list[i].getTitle() != "none")
+        std::cout << list[i];
 }
 
 

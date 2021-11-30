@@ -82,6 +82,7 @@ bool BinaryTree::insert(Movie dataIn)
 {
     Node* newNodePtr = new Node(dataIn);
     root = _insert(root, newNodePtr);
+    count++;
     return true;
 }
 
@@ -116,3 +117,68 @@ void BinaryTree::_destroy(Node* root)
     delete root;
 }
 
+
+
+Node* BinaryTree::_finder(Movie dataIn, Node* nodePtr)
+{
+  if(!nodePtr)
+    return nullptr;
+
+  if(dataIn > nodePtr->getItem())
+   return _finder(dataIn, nodePtr->getRightPtr());
+  if(dataIn < nodePtr->getItem())
+   return _finder(dataIn, nodePtr->getLeftPtr());
+  return nodePtr;
+
+}
+
+void BinaryTree::_remove(Movie dataIn, Node* rt)
+{
+   Node* locatedNode = _finder(dataIn,rt); 
+    if(locatedNode == nullptr)
+      return; 
+
+   if(locatedNode->getRightPtr())               //Internal Node 
+     {
+	Node* minOrMaxNode = getMin(locatedNode->getRightPtr());
+        Movie temp = locatedNode->getItem();
+        locatedNode->setItem(minOrMaxNode->getItem());
+        minOrMaxNode->setItem(temp);        
+        _remove(minOrMaxNode->getItem(), minOrMaxNode);
+     }
+   else if(locatedNode->getLeftPtr())
+     {
+        Node* minOrMaxNode = getMax(locatedNode->getLeftPtr());
+        Movie temp = locatedNode->getItem();
+        locatedNode->setItem(minOrMaxNode->getItem());
+        minOrMaxNode->setItem(temp);        
+        return _remove(minOrMaxNode->getItem(), minOrMaxNode);
+    }
+     Movie dummy;
+     locatedNode->setItem(dummy);
+}
+
+
+Node* BinaryTree::getMax(Node* nodePtr)
+{
+    if(nodePtr->getRightPtr() == nullptr)
+      return nodePtr;
+    else
+     return getMax(nodePtr->getRightPtr());
+}
+
+Node* BinaryTree::getMin(Node* nodePtr)
+{
+    
+    if(nodePtr->getLeftPtr() == nullptr)
+     return nodePtr;
+    else
+     return getMin(nodePtr->getLeftPtr());
+}
+
+bool BinaryTree::remove(Movie dataIn)
+{
+   _remove(dataIn, root);
+   count--;
+   return true;
+}

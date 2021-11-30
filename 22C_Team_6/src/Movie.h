@@ -25,7 +25,9 @@ public:
     void setDirector(const std::string& director) { this->director = director; }
     void setYear(int year) { this->year = year;    }
     void setIsAdult(bool isAdult) { this->isAdult = isAdult; }
-
+    //Copy Constructor
+    Movie(const Movie& mo) {id= mo.getID(); title= mo.getTitle(); lang = mo.getLang(); year = mo.getYear(); 
+                            director = mo.getDirector(); isAdult = mo.getIsAdult();}
     /**
      * Getters
      */
@@ -35,7 +37,9 @@ public:
     std::string getDirector() const { return director; }
     int getYear() const { return year; }
     bool getIsAdult() const { return isAdult; }
-    bool operator > (const Movie& s1) const { return title < s1.title; }
+    bool operator > (const Movie& s1) const { return title > s1.title; }
+    bool operator < (const Movie& s1) const { return title < s1.title;}
+//    Movie& operator = (const Movie& s1) const { return this = s1;}
     friend std::ostream &operator << (std::ostream& os, const Movie& s1){os << s1.title << std::endl; return os;}
     void vDisplay(std::ostream& os) const {
         os << "ID: " << id << std::endl;

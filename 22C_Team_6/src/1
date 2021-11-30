@@ -1,173 +1,186 @@
-#pragma once
+// Implementation file for the BinaryTree class
+#include <iostream>  // For cout and NULL
+
+#include "movieBST.h"
+#include <cstdlib>   // For rand()
+#include <ctime>     // For time()
+using namespace std;
 
 /**
- * Linked list implementation internally used by HashTable
+ * Constructor
  */
-template<typename T>
-class LinkedList {
-public:  
-    struct Node {
-        T value{};
-        Node* prev{nullptr};
-        Node* next{nullptr};
-    };
+BinaryTree::BinaryTree()
+{
+    root = NULL;
+    count = 0;
+}
 
-    // Iterator class
-    class Iterator {
-    public:
-        Iterator(Node* node) : node(node) {}
-        T& operator*() { return node->value; }
-        Iterator& operator++() { node = node->next; return *this; }
-        bool operator==(const Iterator& other) { return node == other.node; }
-        bool operator!=(const Iterator& other) { return node != other.node; }
-        Node* node;
-    };
 
-    LinkedList() : size_(0) {
-        // head and tail sentinetals
-        head = new Node();
-        tail = new Node();
-        head->next = tail;
-        tail->prev = head;
+/**
+ * This function calls a recursive function to traverse the
+ * tree in inorder (the wrapper function)
+ */
+std::vector<Movie> BinaryTree::inOrder() const
+{
+    std::vector<Movie> inOrdList;
+    _inOrder(root,inOrdList);
+    return inOrdList;
+}
+
+Node* BinaryTree::_insert(Node* nodePtr, Node* newNode)
+{
+
+    Node* pWalk = nodePtr;
+
+    if (!nodePtr)
+    {
+        nodePtr = newNode;
+        return nodePtr;
     }
-
-    ~LinkedList() {
-        auto it = begin();
-        // when head = nullptr && tail == nullptr, this will be noop
-        while (it != end()) {
-            it = remove(it);
+    else
+    {
+        if (pWalk->getItem().getTitle() > newNode->getItem().getTitle())
+        {
+            if (!pWalk->getLeftPtr())
+            {
+                pWalk->setLeftPtr(newNode);
+            }
+            else
+                _insert(pWalk->getLeftPtr(), newNode);
         }
-        delete tail;
-    }
-
-    /**
-     * Copy constructor
-     * It copies all the values from scratch. O(n)
-     */
-    LinkedList(const LinkedList& other) {
-        auto it = other.begin();
-        while (it != other.end()) {
-            pushBack(*it);
-            ++it;
+        else
+        {
+            if(!pWalk->getRightPtr())
+            {
+                pWalk->setRightPtr(newNode);
+            }
+            else
+                _insert(pWalk->getRightPtr(), newNode);
         }
+        return nodePtr;
     }
+}
 
-    /**
-     * Copy assignment operator
-     * It copies all the values from scratch. O(n)
-     */
-    LinkedList& operator=(const LinkedList& other) {
-        auto it = other.begin();
-        while (it != other.end()) {
-            pushBack(*it);
-            ++it;
-        }
-        return *this;
+/**
+ * Inorder Traversal of the Binary Tree:
+ * Left-Root-Right (recursive)
+ */
+void BinaryTree::_inOrder(Node* root, std::vector<Movie>& list) const
+{
+    if (root)
+    {
+        _inOrder(root->getLeftPtr(), list);
+        list.push_back(root->getItem());
+        _inOrder(root->getRightPtr(), list);
     }
+}
 
-    /**
-     * Move constructor
-     * It does not copy all the values but only copies the pointers. O(1)
-     */
-    LinkedList(LinkedList&& other) {
-        head = other.head;
-        tail = other.tail;
-        size_ = other.size_;
-        other.head = nullptr;
-        other.tail = nullptr;
-        other.size_ = 0;
-    }
+/**
+ * Insert data into a random Binary Tree
+ */
+bool BinaryTree::insert(Movie dataIn)
+{
+    Node* newNodePtr = new Node(dataIn);
+    root = _insert(root, newNodePtr);
+    count++;
+    return true;
+}
 
-    /**
-     * Move assignmnet operator
-     * It does not copy all the values but only copies the pointers. O(1)
-     */
-    LinkedList& operator=(LinkedList&& other) {
-        head = other.head;
-        tail = other.tail;
-        size_ = other.size_;
-        other.head = nullptr;
-        other.tail = nullptr;
-        other.size_ = 0;
-        return *this;
-    }
+/*bool BinaryTree::delete(Movie dataIn)
+{
+   Node* pWalk = root;
+   if(!pWalk)
+    return false;
+}
+*/
 
-    /**
-     * Inserts a new entry at the back
-     * @param value the entry to add
-     */
-    void pushBack(T value) {
-        auto node = new Node();
-        node->value = value;
+/**
+ * Destructor
+ * This function calls a recursive function to delete all nodes in the binary tree
+ */
+BinaryTree::~BinaryTree()
+{
+    if (root)
+        _destroy(root);
+}
 
-        auto prev = tail->prev;
-        node->next = tail;
-        node->prev = prev;
+/**
+ * This function traverses the binary tree in postorder and deletes every node
+ */
+void BinaryTree::_destroy(Node* root)
+{
+    if (!root)
+     return;
+    
+    _destroy(root->getLeftPtr());
+    _destroy(root->getRightPtr());
+    delete root;
+}
 
-        prev->next = node;
-        tail->prev = node;
-        size_++;
-    }
 
-    /**
-     * Remove the entry at the specified iterator point and returns the next iterator
-     * @param it the iterator point to remove
-     */
-    Iterator remove(const Iterator& it) {
-        auto node = it.node;
-        auto next = node->next;
-        auto prev = node->prev;
 
-        prev->next = next;
-        next->prev = prev;
-        
-        delete node;
+Node* BinaryTree::_finder(Movie dataIn, Node* nodePtr)
+{
+  if(!nodePtr)
+    return nullptr;
 
-        size_--;
-        return Iterator(next);
-    }
+  if(dataIn > nodePtr->getItem())
+   return _finder(dataIn, nodePtr->getRightPtr());
+  if(dataIn < nodePtr->getItem())
+   return _finder(dataIn, nodePtr->getLeftPtr());
+  return nodePtr;
 
-    /**
-     * Returns the iterator pointing to the first element
-     * @return begin iterator
-     */
-    Iterator begin() const { return Iterator(head->next); }
+}
 
-    /**
-     * Returns the iterator pointing to the tail sentinetal node
-     * @return end iterator
-     */
-    Iterator end() const { return Iterator(tail); }
+bool BinaryTree::_remove(Movie dataIn, Node* rt)
+{
+   Node* locatedNode = _finder(dataIn, rt);
+   if(locatedNode == nullptr)
+      return false;
 
-    /**
-     * Find the iterator pointing to the element with the specified value
-     * @return iterator pointing to the element if found, end() otherwise
-     */
-    Iterator find(T value) {
-        auto it = begin();
-        while (it != end() && *it != value) {
-            ++it;
-        }
-        return it;
-    }
+   if(locatedNode->getRightPtr())               //Internal Node 
+     {
+	Node* minOrMaxNode = getMin(locatedNode->getRightPtr());
+        Movie temp = locatedNode->getItem();
+        *locatedNode = *minOrMaxNode;
+        *minOrMaxNode = temp;
+        _remove(minOrMaxNode->getItem(), minOrMaxNode);
+     }
+   else if(locatedNode->getLeftPtr())
+     {
+        Node* minOrMaxNode = getMax(locatedNode->getLeftPtr());
+        Movie temp = locatedNode->getItem();
+        *locatedNode = *minOrMaxNode;
+        *minOrMaxNode = temp;
+        _remove(minOrMaxNode->getItem(), minOrMaxNode);
+     }
+   else
+   {
+	delete locatedNode;		//leafNode
+        count--;
+   }  
+ return true;
+   
+}
 
-    /**
-     * Returns the number of elements in the list
-     * @return number of elements
-      */
-    size_t size() const {
-        return size_;
-    }
+Node* BinaryTree::getMax(Node* nodePtr)
+{
+    if(nodePtr->getRightPtr() == nullptr)
+      return nodePtr;
+    else
+     return getMax(nodePtr->getRightPtr());
+}
 
-    /**
-     * Is this list empty?
-     * @return true if empty, false otherwise
-      */
-    bool empty() const {
-        return size_ == 0;
-    }
-private:
-    Node* head;
-    Node* tail;
-    size_t size_;
-};
+Node* BinaryTree::getMin(Node* nodePtr)
+{
+    if(nodePtr->getLeftPtr() == nullptr)
+     return nodePtr;
+    else
+     return getMin(nodePtr->getLeftPtr());
+}
+
+bool BinaryTree::remove(Movie dataIn)
+{
+   Node* tempRoot;
+   return _remove(dataIn, tempRoot);
+}

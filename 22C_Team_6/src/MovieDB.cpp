@@ -36,8 +36,13 @@ void MovieDB::addMovie(const Movie& movie) {
 }
 
 bool MovieDB::deleteMovieByID(const MovieID& id, Movie& deletedMovie) {
-    //BST.
-    return hashTable.remove(id, deletedMovie);
+    Movie movie;
+    if(hashTable.find(id,movie))
+      {
+       BST.remove(movie);
+       return hashTable.remove(id,deletedMovie);
+      }
+    return false;
 }
 
 bool MovieDB::findMovieByID(const MovieID& id, Movie& movie) {

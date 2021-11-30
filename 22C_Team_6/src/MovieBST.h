@@ -20,7 +20,9 @@ public:
 
     // Binary Tree operations
     bool insert(Movie dataIn);
-//    bool delete(Movie dataIn);
+    bool remove(Movie);
+    Node* getMax(Node*);
+    Node* getMin(Node*);
     std::vector<Movie> inOrder()const;
     void preOrder() const;
     void postOrder() const;
@@ -29,6 +31,9 @@ public:
 
 private:
     Node* _insert(Node* nodePtr, Node* newNode);
+    Node* _finder(Movie dataIn, Node* nodePtr);
+    void _remove(Movie dataIn, Node* nodePtr); 
     void _inOrder(Node* root, std::vector<Movie>&) const;
     void _destroy(Node* root);
+   
 };
