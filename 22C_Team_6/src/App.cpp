@@ -24,15 +24,21 @@ int App::run() {
         case 'u':
             processUndoDeleteCmd();
             break;
-/*  	case 's':
-	    processSearchBySecKeyCmd();
-	    break;*/
+  	case 's':
+	    processSearchByTitleCmd();
+	    break;
         case 'a':
 	    processDisplayAllKeyCmd();
 	    break;
         case 'e':
             quit = true;
 	     break;
+       case 'A':
+           processAddCmd();
+           break;
+       case 'S':
+           processSaveFileCmd();
+           break;
         default:
             std::cout << "Invalid choice" << std::endl;
         }
@@ -45,15 +51,17 @@ void App::printMenu() {
     std::cout << "Search movie by primary key: p" << std::endl;
     std::cout << "Delete by primary key: d" << std::endl;
     std::cout << "List all Movies: a" << std::endl;
+    std::cout << "Search movie by secondary key: s" << std::endl;
+    std::cout << "Add new Movie: A" << std::endl;
+    std::cout << "Save Movie Database to a file: S" << std::endl;
     std::cout << "Undo movie deletion: u" << std::endl;
+
     std::cout << "Exit: e" << std::endl;
+
 }
 
-void App::processAddCmd() {
-}
 
-void App::processSearchByTitleCmd() {
-}
+
 
 void App::processLoadFileCmd() {
     std::cout << "Input file name:";
@@ -136,30 +144,53 @@ void App::processUndoDeleteCmd() {
     std::cout << "Movie delete undone: " << std::endl;
     movie.vDisplay(std::cout);
 }
-/*
-void App::processSearchBySecKeyCmd(){
-    
+
+void App::processSearchByTitleCmd()
+{
     std::cout << "Input Secondary key:";
     std::string key;
     std::getline(std::cin, key);
-    
-    Movie movie;
-    bool found = movieDB.findMovieByID(key, movie);
-    if (found) {
-        movie.vDisplay(std::cout);
-    } else {
-        std::cout << "Movie not found" << std::endl;
+    std::vector<Movie> movieList = movieDB.findMovieByTitle(key);
+       
+    if(movieList.size() > 0)
+    {
+      for(int i = 0; i < movieList.size(); i++)
+       movieList[i].vDisplay(std::cout);
     }
+    else
+      std::cout << "Movie not found" << std::endl;
 }
-*/
 
+
+void App::processAddCmd(){
+    std::string primaryK;
+    std::string title;
+    std::string lang;
+    int year;
+    std::string direc;
+    bool rating;
+    std::cout << "Enter Primary Key:";
+    std::getline(std::cin, primaryK);
+    std::cout << "Enter Title:";
+    std::getline(std::cin, title);
+    std::cout << "Enter Language:";
+    std::getline(std::cin, lang);
+    std::cout << "Enter release year:";
+    std::cin >> year;
+    std::cin.ignore();
+    std::cout << "Enter Director:";
+    std::getline(std::cin, direc);
+    std::cout << "Enter rating(1=Adult/0=NoAdult):";
+    std::cin >>  rating;
+    Movie movie(primaryK, title, lang, year, direc, rating);
+    movieDB.addMovie(movie); 
+}      
 
 void App::processDisplayAllKeyCmd(){
    std::vector<Movie> list; 
    list = movieDB.listMovieSortedByTitle();
    for(int i = 0; i < list.size(); i++)
-     if(list[i].getTitle() != "none")
-        std::cout << list[i];
+     std::cout << list[i];
 }
 
 

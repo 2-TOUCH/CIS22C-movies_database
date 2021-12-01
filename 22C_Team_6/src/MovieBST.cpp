@@ -137,14 +137,31 @@ void BinaryTree::_remove(Movie dataIn, Node* rt)
    Node* locatedNode = _finder(dataIn,rt); 
     if(locatedNode == nullptr)
       return; 
+    if(isLeafNode(locatedNode))
+    {
+      Node* pNode = getParent(locatedNode,root);
+      if(pNode->getRightPtr() == locatedNode)
+       { 
+         pNode->setRightPtr(nullptr);
+         delete locatedNode;
+       }
+       else
+        {
+          pNode->setLeftPtr(nullptr);
+          delete locatedNode;
+        }
 
-   if(locatedNode->getRightPtr())               //Internal Node 
+    }    
+
+ 
+  if(locatedNode->getRightPtr())               //Internal Node 
      {
 	Node* minOrMaxNode = getMin(locatedNode->getRightPtr());
         Movie temp = locatedNode->getItem();
         locatedNode->setItem(minOrMaxNode->getItem());
         minOrMaxNode->setItem(temp);        
         _remove(minOrMaxNode->getItem(), minOrMaxNode);
+        return;
      }
    else if(locatedNode->getLeftPtr())
      {
@@ -152,10 +169,14 @@ void BinaryTree::_remove(Movie dataIn, Node* rt)
         Movie temp = locatedNode->getItem();
         locatedNode->setItem(minOrMaxNode->getItem());
         minOrMaxNode->setItem(temp);        
-        return _remove(minOrMaxNode->getItem(), minOrMaxNode);
-    }
-     Movie dummy;
-     locatedNode->setItem(dummy);
+	_remove(minOrMaxNode->getItem(), minOrMaxNode);
+        return;
+     }
+    else
+       {
+        return;
+       } 
+    
 }
 
 
@@ -178,7 +199,50 @@ Node* BinaryTree::getMin(Node* nodePtr)
 
 bool BinaryTree::remove(Movie dataIn)
 {
-   _remove(dataIn, root);
    count--;
+   _remove(dataIn, root);
    return true;
+}
+
+Node* BinaryTree::getParent(Node* child, Node* rt)
+{
+   if(!rt)
+     return nullptr;
+   Node* parentNode = rt;
+   if(rt->getRightPtr() && rt->getRightPtr()->getItem().getID() == child->getItem().getID())
+     return parentNode;
+   if(rt->getLeftPtr() && rt->getLeftPtr()->getItem().getID() == child->getItem().getID())
+     return parentNode;
+   if(getParent(child, parentNode->getRightPtr()))
+     return getParent(child,parentNode->getRightPtr());
+   return getParent(child, parentNode->getLeftPtr());
+}
+
+vector<Movie> BinaryTree::DFS(std::string title)
+{
+  std::stack<Node*> stck;
+  std::vector<Movie> movieList;
+  stck.push(root);
+  _dfs(stck, title, movieList);
+  return movieList;
+}
+
+void BinaryTree::_dfs(std::stack<Node*>& stk, string title, std::vector<Movie>& list)
+{
+   while(!stk.empty())
+   {
+     Node* nodeptr = stk.top();
+     stk.pop();
+     if(nodeptr->getItem().getTitle() == title)
+        list.push_back(nodeptr->getItem());
+     if(nodeptr->getRightPtr())
+      {
+       stk.push(nodeptr->getRightPtr()); 
+       _dfs(stk, title, list);
+      }
+     if(nodeptr->getLeftPtr())
+       stk.push(nodeptr->getLeftPtr());
+       _dfs(stk, title, list);
+   }
+
 }

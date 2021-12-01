@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <stack>
 #include "Movie.h"
 #include "BSTNode.h"
 
@@ -24,16 +25,19 @@ public:
     Node* getMax(Node*);
     Node* getMin(Node*);
     std::vector<Movie> inOrder()const;
+    std::vector<Movie> DFS(std::string);
     void preOrder() const;
     void postOrder() const;
     int getCount() const { return count; }
     bool isEmpty() const { return count == 0; }
-
+    bool isLeafNode(Node* node) { return !node->getLeftPtr() && !node->getRightPtr();}
+    Node* getParent(Node*, Node*);
+    
 private:
     Node* _insert(Node* nodePtr, Node* newNode);
     Node* _finder(Movie dataIn, Node* nodePtr);
     void _remove(Movie dataIn, Node* nodePtr); 
     void _inOrder(Node* root, std::vector<Movie>&) const;
     void _destroy(Node* root);
-   
+    void _dfs(std::stack<Node*>&, std::string, std::vector<Movie>&); 
 };

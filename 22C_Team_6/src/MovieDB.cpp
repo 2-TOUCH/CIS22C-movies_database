@@ -58,8 +58,14 @@ std::vector<Movie> MovieDB::listMovieSortedByTitle(){
   return BST.inOrder();
 }
 
-std::vector<Movie> MovieDB::getAllMovies() {
+std::vector<Movie> MovieDB::getAllMovies() const {
     return hashTable.list();
+}
+std::vector<Movie> MovieDB::findMovieByTitle(const std::string& title)
+{
+   std::vector<Movie> movieList;
+   movieList = BST.DFS(title);
+   return movieList;
 }
 
 MovieDBDSStats MovieDB::getDataStructureStats() const {

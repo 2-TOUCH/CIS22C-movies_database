@@ -53,7 +53,7 @@ public:
      * List all movies using hash table
      * @return vector of movies
      */
-    std::vector<Movie> getAllMovies();
+    std::vector<Movie> getAllMovies() const;
     /**
      * Delete movie by it primary key.
      * @param id Movie's primary key.
