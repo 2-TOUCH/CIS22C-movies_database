@@ -226,6 +226,14 @@ private:
     struct Item {
         Key key;
         Value value;
+	
+	/**
+	Overloaded Operators
+	
+	*Overloads == to compare the keys
+	*Overloads != to compare the keys
+	
+	**/
         bool operator==(const Item& other) const {
             return key == other.key;
         }
