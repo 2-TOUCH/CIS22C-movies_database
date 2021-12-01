@@ -7,10 +7,16 @@ using MovieID = std::string;
 
 class Movie; //Forward Decleration
 
+//Overloaded << operator
 std::ostream&operator << (std::ostream&, const Movie&);
 
 class Movie {
 public:
+    
+    
+    /**
+    * Constructors
+    */
     Movie(const MovieID& id, const std::string& title, const std::string& lang,
           int year, const std::string& director, bool isAdult) : id(id), title(title), lang(lang),
                                  year(year), director(director), isAdult(isAdult) {}
