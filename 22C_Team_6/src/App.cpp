@@ -74,7 +74,7 @@ void App::printMenu() {
 
 
 
-
+//Function loads the input file
 void App::processLoadFileCmd() {
 
     std::cout << std::endl;
@@ -98,6 +98,7 @@ void App::processLoadFileCmd() {
     std::cout << "File loaded" << std::endl << std::endl;
 }
 
+//Function saves the data into a file
 void App::processSaveFileCmd() {
     std::cout << std::endl << "Input file name:";
     std::string fileName;
@@ -118,6 +119,7 @@ void App::processSaveFileCmd() {
     std::cout << "File saved" << std::endl << std::endl;
 }
 
+//Function searches through the primary keys
 void App::processSearchByKeyCmd() {
 
     std::cout << std::endl << "Input primary key:";
@@ -134,6 +136,7 @@ void App::processSearchByKeyCmd() {
     }
 }
 
+//Function deletes Movie object from list
 void App::processDeleteByKeyCmd() {
     std::cout << std::endl << "Input primary key:";
     std::string key;
@@ -149,6 +152,7 @@ void App::processDeleteByKeyCmd() {
     }
 }
 
+//Function undos delete
 void App::processUndoDeleteCmd() {
     if (deletedMovieStack.empty()) {
         std::cout << "No more movie delete to undo" << std::endl;
@@ -161,6 +165,7 @@ void App::processUndoDeleteCmd() {
     movie.vDisplay(std::cout);
 }
 
+//Function searches via secondary key
 void App::processSearchByTitleCmd()
 {
     std::cout << std::endl << "Input Secondary key:";
@@ -178,7 +183,7 @@ void App::processSearchByTitleCmd()
       std::cout << "Movie not found" << std::endl << std::endl;
 }
 
-
+//Adds a new movie into the list
 void App::processAddCmd(){
     std::string primaryK;
     std::string title;
@@ -205,6 +210,7 @@ void App::processAddCmd(){
     std::cout << std::endl;
 }
 
+//Display all movies
 void App::processDisplayAllKeyCmd()
 {
    std::cout << std::endl;
