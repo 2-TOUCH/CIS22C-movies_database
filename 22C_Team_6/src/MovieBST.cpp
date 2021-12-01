@@ -27,6 +27,10 @@ std::vector<Movie> BinaryTree::inOrder() const
     return inOrdList;
 }
 
+/**
+ * This function calls a recursive function to insert the
+ * node into the tree in insert (the wrapper function)
+ */
 Node* BinaryTree::_insert(Node* nodePtr, Node* newNode)
 {
 
@@ -118,7 +122,9 @@ void BinaryTree::_destroy(Node* root)
 }
 
 
-
+/**
+ * This function traverses the binary tree to search for a specific node
+ */
 Node* BinaryTree::_finder(Movie dataIn, Node* nodePtr)
 {
   if(!nodePtr)
@@ -132,6 +138,9 @@ Node* BinaryTree::_finder(Movie dataIn, Node* nodePtr)
 
 }
 
+/**
+ * This function removes a specific node from the data
+ */
 void BinaryTree::_remove(Movie dataIn, Node* rt)
 {
    Node* locatedNode = _finder(dataIn,rt); 
@@ -179,7 +188,9 @@ void BinaryTree::_remove(Movie dataIn, Node* rt)
     
 }
 
-
+/**
+* Finds the right-most leaf in the tree
+*/
 Node* BinaryTree::getMax(Node* nodePtr)
 {
     if(nodePtr->getRightPtr() == nullptr)
@@ -188,6 +199,9 @@ Node* BinaryTree::getMax(Node* nodePtr)
      return getMax(nodePtr->getRightPtr());
 }
 
+/**
+* Finds the left-most leaf in the tree
+*/
 Node* BinaryTree::getMin(Node* nodePtr)
 {
     
@@ -197,6 +211,9 @@ Node* BinaryTree::getMin(Node* nodePtr)
      return getMin(nodePtr->getLeftPtr());
 }
 
+/**
+* Removes data from the binary tree
+*/
 bool BinaryTree::remove(Movie dataIn)
 {
    count--;
@@ -204,6 +221,9 @@ bool BinaryTree::remove(Movie dataIn)
    return true;
 }
 
+/**
+* Finds a leafs parent in the binary tree
+*/
 Node* BinaryTree::getParent(Node* child, Node* rt)
 {
    if(!rt)
@@ -218,6 +238,9 @@ Node* BinaryTree::getParent(Node* child, Node* rt)
    return getParent(child, parentNode->getLeftPtr());
 }
 
+/**
+* Function uses depth-first search to find a specific node via the secondary key
+*/
 vector<Movie> BinaryTree::DFS(std::string title)
 {
   std::stack<Node*> stck;
