@@ -37,6 +37,7 @@ public:
         while (it != end()) {
             it = remove(it);
         }
+        delete head;
         delete tail;
      }
 
