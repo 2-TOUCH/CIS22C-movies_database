@@ -15,13 +15,25 @@ int App::run() {
         case 'l':
             processLoadFileCmd();
             break;
+        case 'L':
+            processLoadFileCmd();
+            break;
         case 'p':
+            processSearchByKeyCmd();
+            break;
+        case 'P':
             processSearchByKeyCmd();
             break;
         case 'd':
             processDeleteByKeyCmd();
             break;
+        case 'D':
+            processDeleteByKeyCmd();
+            break;
         case 'u':
+            processUndoDeleteCmd();
+            break;
+        case 'U':
             processUndoDeleteCmd();
             break;
   	case 's':
@@ -47,9 +59,9 @@ int App::run() {
 }
 
 void App::printMenu() {
-    std::cout << "Load file: l" << std::endl;
-    std::cout << "Search movie by primary key: p" << std::endl;
-    std::cout << "Delete by primary key: d" << std::endl;
+    std::cout << "Load file: L/l" << std::endl;
+    std::cout << "Search movie by primary key: P/p" << std::endl;
+    std::cout << "Delete by primary key: D/d" << std::endl;
     std::cout << "List all Movies: a" << std::endl;
     std::cout << "Search movie by secondary key: s" << std::endl;
     std::cout << "Add new Movie: A" << std::endl;
@@ -64,6 +76,8 @@ void App::printMenu() {
 
 
 void App::processLoadFileCmd() {
+
+    std::cout << std::endl;
     std::cout << "Input file name:";
     std::string fileName;
     std::cin >> fileName;
@@ -81,11 +95,11 @@ void App::processLoadFileCmd() {
     } catch (std::exception& e) {
         std::cout << e.what() << std::endl;
     }
-    std::cout << "File loaded" << std::endl;
+    std::cout << "File loaded" << std::endl << std::endl;
 }
 
 void App::processSaveFileCmd() {
-    std::cout << "Input file name:";
+    std::cout << std::endl << "Input file name:";
     std::string fileName;
     std::cin >> fileName;
 
@@ -101,35 +115,37 @@ void App::processSaveFileCmd() {
     } catch (std::exception& e) {
         std::cout << e.what() << std::endl;
     }
-    std::cout << "File saved" << std::endl;
+    std::cout << "File saved" << std::endl << std::endl;
 }
 
 void App::processSearchByKeyCmd() {
-    std::cout << "Input primary key:";
+
+    std::cout << std::endl << "Input primary key:";
     std::string key;
     std::getline(std::cin, key);
-    
+
     Movie movie;
     bool found = movieDB.findMovieByID(key, movie);
     if (found) {
         movie.vDisplay(std::cout);
+        std::cout << std::endl;
     } else {
-        std::cout << "Movie not found" << std::endl;
+        std::cout << "Movie not found" << std::endl << std::endl;
     }
 }
 
 void App::processDeleteByKeyCmd() {
-    std::cout << "Input primary key:";
+    std::cout << std::endl << "Input primary key:";
     std::string key;
     std::getline(std::cin, key);
-    
+
     Movie movie;
     bool deleted = movieDB.deleteMovieByID(key, movie);
     if (deleted) {
-        std::cout << "Movie deleted" << std::endl;
+        std::cout << "Movie deleted" << std::endl << std::endl;
         deletedMovieStack.push(movie);
     } else {
-        std::cout << "Movie not found" << std::endl;
+        std::cout << "Movie not found" << std::endl << std::endl;
     }
 }
 
@@ -147,18 +163,19 @@ void App::processUndoDeleteCmd() {
 
 void App::processSearchByTitleCmd()
 {
-    std::cout << "Input Secondary key:";
+    std::cout << std::endl << "Input Secondary key:";
     std::string key;
     std::getline(std::cin, key);
     std::vector<Movie> movieList = movieDB.findMovieByTitle(key);
-       
+
     if(movieList.size() > 0)
     {
       for(int i = 0; i < movieList.size(); i++)
        movieList[i].vDisplay(std::cout);
+      std::cout << std::endl;
     }
     else
-      std::cout << "Movie not found" << std::endl;
+      std::cout << "Movie not found" << std::endl << std::endl;
 }
 
 
@@ -169,7 +186,7 @@ void App::processAddCmd(){
     int year;
     std::string direc;
     bool rating;
-    std::cout << "Enter Primary Key:";
+    std::cout << std::endl << "Enter Primary Key:";
     std::getline(std::cin, primaryK);
     std::cout << "Enter Title:";
     std::getline(std::cin, title);
@@ -183,14 +200,24 @@ void App::processAddCmd(){
     std::cout << "Enter rating(1=Adult/0=NoAdult):";
     std::cin >>  rating;
     Movie movie(primaryK, title, lang, year, direc, rating);
-    movieDB.addMovie(movie); 
-}      
+    movieDB.addMovie(movie);
 
-void App::processDisplayAllKeyCmd(){
-   std::vector<Movie> list; 
+    std::cout << std::endl;
+}
+
+void App::processDisplayAllKeyCmd()
+{
+   std::cout << std::endl;
+   std::cout << "All Movies In List" << std::endl;
+   std::cout << "==================" << std::endl;
+
+
+   std::vector<Movie> list;
    list = movieDB.listMovieSortedByTitle();
    for(int i = 0; i < list.size(); i++)
      std::cout << list[i];
+
+   std::cout << std::endl;
 }
 
 
