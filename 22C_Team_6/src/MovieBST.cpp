@@ -230,9 +230,9 @@ Node* BinaryTree::getParent(Node* child, Node* rt)
    if(!rt)
      return nullptr;
    Node* parentNode = rt;
-   if(rt->getRightPtr() && rt->getRightPtr()->getItem().getID() == child->getItem().getID())
+   if(rt->getRightPtr() && rt->getRightPtr() == child)
      return parentNode;
-   if(rt->getLeftPtr() && rt->getLeftPtr()->getItem().getID() == child->getItem().getID())
+   if(rt->getLeftPtr() && rt->getLeftPtr() == child)
      return parentNode;
    if(getParent(child, parentNode->getRightPtr()))
      return getParent(child,parentNode->getRightPtr());
