@@ -265,7 +265,6 @@ void App::processDisplayHashStatsCmd() const
    std::cout << "Load Factor: " << stats.hashTableLoadFactor << std::endl;
    std::cout << "Bucket Count: " << stats.hashTableBucketsCount << std::endl;
    std::cout << "Num of Collisions: " << stats.hashTableNumCollisions << std::endl;
-   std::cout << "BST Height: " << stats.bstHeight << std::endl;
 }
 
 void App::processDisplayIndentedTreeCmd()
