@@ -71,6 +71,8 @@ public:
      * @returns stats
      */
     MovieDBDSStats getDataStructureStats() const;
+    void printIndentedTree(void visit(Movie&, int)){BST.printTree(visit);}
+
 private:
     HashTable<MovieID, Movie> hashTable;
     BinaryTree BST;

@@ -28,6 +28,7 @@ public:
     std::vector<Movie> DFS(std::string);
     void preOrder() const;
     void postOrder() const;
+    void printTree(void visit(Movie&, int)) const {_printTree(visit, root,1);}
     int getCount() const { return count; }
     bool isEmpty() const { return count == 0; }
     bool isLeafNode(Node* node) { return !node->getLeftPtr() && !node->getRightPtr();}
@@ -40,4 +41,7 @@ private:
     void _inOrder(Node* root, std::vector<Movie>&) const;
     void _destroy(Node* root);
     void _dfs(std::stack<Node*>&, std::string, std::vector<Movie>&); 
+    void _printTree(void visit(Movie&, int), Node* nodePtr, int level) const;
 };
+	
+         

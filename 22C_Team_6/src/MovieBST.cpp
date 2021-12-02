@@ -216,8 +216,9 @@ Node* BinaryTree::getMin(Node* nodePtr)
 */
 bool BinaryTree::remove(Movie dataIn)
 {
-   count--;
-   _remove(dataIn, root);
+        _remove(dataIn, root);
+        count--;
+       
    return true;
 }
 
@@ -268,4 +269,16 @@ void BinaryTree::_dfs(std::stack<Node*>& stk, string title, std::vector<Movie>& 
        _dfs(stk, title, list);
    }
 
+}
+
+//Prints tree as an indented list
+void BinaryTree::_printTree(void visit(Movie&, int), Node* nodePtr, int level) const
+{
+ if (nodePtr) // != NULL
+    {
+        Movie item = nodePtr->getItem();
+        visit(item,level);
+        _printTree(visit, nodePtr->getRightPtr(), level+1);
+        _printTree(visit, nodePtr->getLeftPtr(), level+1);
+    }
 }

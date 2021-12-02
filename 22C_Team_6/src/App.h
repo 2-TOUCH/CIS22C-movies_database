@@ -32,7 +32,9 @@ private:
     void processDeleteByKeyCmd();
     void processUndoDeleteCmd();
     void processDisplayAllKeyCmd();
-
+    void processDisplayAllMemCmd();
+    void processDisplayHashStatsCmd() const;   
+    void processDisplayIndentedTreeCmd();
     void resetMovieDB() { movieDB = MovieDB(); }
 
     MovieDB movieDB;

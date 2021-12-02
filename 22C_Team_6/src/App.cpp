@@ -2,6 +2,14 @@
 #include <iostream>
 #include <vector>
 
+//Function for the indented Tree display
+void visit(Movie&item, int level)
+{
+    for (int i = 1; i < level; i++)
+        std::cout << "..";
+    std::cout << level << "). " << item.getTitle() << std::endl;
+}
+
 int App::run() {
     bool quit = false;
     std::cout << "*****Welcome to Movies Database      *****" << std::endl;
@@ -30,6 +38,9 @@ int App::run() {
         case 'D':
             processDeleteByKeyCmd();
             break;
+        case 'I':
+ 	    processDisplayHashStatsCmd();
+	    break;
         case 'u':
             processUndoDeleteCmd();
             break;
@@ -51,7 +62,16 @@ int App::run() {
        case 'S':
            processSaveFileCmd();
            break;
-        default:
+       case 'H':
+           continue;
+	   break;
+       case 'h':
+          processDisplayAllMemCmd();
+          break;
+       case 'z':
+         processDisplayIndentedTreeCmd();
+         break;
+       default:
             std::cout << "Invalid choice" << std::endl;
         }
     }
@@ -64,8 +84,10 @@ void App::printMenu() {
     std::cout << "Delete by primary key: D/d" << std::endl;
     std::cout << "List all Movies: a" << std::endl;
     std::cout << "Search movie by secondary key: s" << std::endl;
+    std::cout << "H -- for help: H" << std::endl;
     std::cout << "Add new Movie: A" << std::endl;
     std::cout << "Save Movie Database to a file: S" << std::endl;
+    std::cout << "Show Table Statistics: I" << std::endl;
     std::cout << "Undo movie deletion: u" << std::endl;
 
     std::cout << "Exit: e" << std::endl;
@@ -225,5 +247,31 @@ void App::processDisplayAllKeyCmd()
 
    std::cout << std::endl;
 }
+
+//Display Team Members(Hidden Feature)
+void App::processDisplayAllMemCmd()
+{
+   std::cout << std::endl << std::endl << "Team 6 Members" << std::endl;
+   std::cout << "Abdullah, Arnesh, Sunho, Ul" << std::endl;
+   std::cout << "*****Abdullah, Arnesh, Sunho, Ulysses*****" << std::endl << std::endl;
+
+}
+
+//Display Hash Table Statistics
+void App::processDisplayHashStatsCmd() const
+{
+   MovieDBDSStats stats = movieDB.getDataStructureStats(); 
+   std::cout << "Hash Table Statistics:" << std::endl;
+   std::cout << "Load Factor: " << stats.hashTableLoadFactor << std::endl;
+   std::cout << "Bucket Count: " << stats.hashTableBucketsCount << std::endl;
+   std::cout << "Num of Collisions: " << stats.hashTableNumCollisions << std::endl;
+   std::cout << "BST Height: " << stats.bstHeight << std::endl;
+}
+
+void App::processDisplayIndentedTreeCmd()
+{
+   movieDB.printIndentedTree(visit);   
+}
+
 
 
