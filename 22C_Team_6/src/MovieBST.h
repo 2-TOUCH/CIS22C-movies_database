@@ -26,8 +26,6 @@ public:
     Node* getMin(Node*);
     std::vector<Movie> inOrder()const;
     std::vector<Movie> DFS(std::string);
-    void preOrder() const;
-    void postOrder() const;
     void printTree(void visit(Movie&, int)) const {_printTree(visit, root,1);}
     int getCount() const { return count; }
     bool isEmpty() const { return count == 0; }
