@@ -1,0 +1,76 @@
+(base) Arneshs-iMac:progam_docs arneshregmi$ g++ -g -std=c++11 App.cpp FileLoader.cpp FileWriter.cpp MovieBST.cpp MovieDB.cpp main.cpp 
+In file included from App.cpp:1:
+./App.h:6:10: warning: non-portable path to file '"FIleLoader.h"'; specified path differs in
+      case from file name on disk [-Wnonportable-include-path]
+#include "FileLoader.h"
+         ^~~~~~~~~~~~~~
+         "FIleLoader.h"
+1 warning generated.
+MovieBST.cpp:2:10: warning: non-portable path to file '"MovieBST.h"'; specified path differs in
+      case from file name on disk [-Wnonportable-include-path]
+#include "movieBST.h"
+         ^~~~~~~~~~~~
+         "MovieBST.h"
+1 warning generated.
+In file included from main.cpp:1:
+./App.h:6:10: warning: non-portable path to file '"FIleLoader.h"'; specified path differs in
+      case from file name on disk [-Wnonportable-include-path]
+#include "FileLoader.h"
+         ^~~~~~~~~~~~~~
+         "FIleLoader.h"
+1 warning generated.
+(base) Arneshs-iMac:progam_docs arneshregmi$ ./a
+-bash: ./a: No such file or directory
+(base) Arneshs-iMac:progam_docs arneshregmi$ g++ -g -std=c++11 App.cpp FileLoader.cpp FileWriter.cpp MovieBST.cpp MovieDB.cpp main.cpp 
+In file included from App.cpp:1:
+./App.h:6:10: warning: non-portable path to file '"FIleLoader.h"'; specified path differs in
+      case from file name on disk [-Wnonportable-include-path]
+#include "FileLoader.h"
+         ^~~~~~~~~~~~~~
+         "FIleLoader.h"
+1 warning generated.
+MovieBST.cpp:2:10: warning: non-portable path to file '"MovieBST.h"'; specified path differs in
+      case from file name on disk [-Wnonportable-include-path]
+#include "movieBST.h"
+         ^~~~~~~~~~~~
+         "MovieBST.h"
+1 warning generated.
+In file included from main.cpp:1:
+./App.h:6:10: warning: non-portable path to file '"FIleLoader.h"'; specified path differs in
+      case from file name on disk [-Wnonportable-include-path]
+#include "FileLoader.h"
+         ^~~~~~~~~~~~~~
+         "FIleLoader.h"
+1 warning generated.
+(base) Arneshs-iMac:progam_docs arneshregmi$ ./a.out
+*****Welcome to Movies Database      *****
+*****Abdullah, Arnesh, Sunho, Ulysses*****
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+l
+
+Input file name:Movies.txt
+File loaded
+
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+e
+(base) Arneshs-iMac:progam_docs arneshregmi$ 

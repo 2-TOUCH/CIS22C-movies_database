@@ -68,6 +68,8 @@ std::vector<Movie> MovieDB::getAllMovies() const {
 }
 std::vector<Movie> MovieDB::findMovieByTitle(const std::string& title) {
     std::vector<Movie> movieList;
+    if(BST.isEmpty())
+      return movieList;
     movieList = BST.DFS(title);
     return movieList;
 }

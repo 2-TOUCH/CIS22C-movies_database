@@ -1,0 +1,7 @@
+This test case demonstrates the Print inorder Tree of the BST of the program.
+The print inorder option is executed with menu option 'a'.
+
+This test case consists of:
+   TC1: Print on empty database => empty Tree.
+   TC2: Print on a populated database => Prints Movies in ASCII sorted order.
+   TC3: Print on a populated database with duplicated secondary keys => Print Movies in ASCII sorted order.

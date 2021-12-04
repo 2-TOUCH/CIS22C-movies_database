@@ -1,0 +1,9 @@
+This test case demonstrates the loading of the file.
+The file is loaded using the 'l/L' menu option.
+
+This test case consists of:
+   TC1. Loading empty file => Empty Databse.
+   TC2. Loading an erroneous file(not properly delimited) => Unpopulated Database and error feedback. 
+   TC3. Loading normal file(delimited properly) => Populated Database.
+   TC4. Loading a same file multiple times to demonstrate no duplicates => No duplicate entries.
+   TC5. Loading a normal file with a synonymn(different primary key, same title) => Populate Database including synonymns.

@@ -4,5 +4,6 @@ The search by Secondary Key is executed with menu option 's'
 This test case consists of:
    TC1. Search by Secondary Key on Empty Database   =>  Not found
    TC2. Search by Secondary Key on Populated Databse => Print Movie Details
-   TC3. Search by Secondary Key on Populated Databse with Synonymns => Print all Movies(Synonymns) 
+   TC3. Search by Secondary Key on Populated Databse with multiple 
+                                    equivalent Secondary Key => Print all Movies(Identical Secondary Key) 
    TC4. Search by an incorrect Secondary Key on a Populated Database = > Not found
