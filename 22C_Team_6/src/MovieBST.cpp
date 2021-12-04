@@ -1,29 +1,26 @@
 // Implementation file for the BinaryTree class
-#include <iostream>  // For cout and NULL
-
 #include "movieBST.h"
+
 #include <cstdlib>   // For rand()
 #include <ctime>     // For time()
+#include <iostream>  // For cout and NULL
 using namespace std;
 
 /**
  * Constructor
  */
-BinaryTree::BinaryTree()
-{
+BinaryTree::BinaryTree() {
     root = NULL;
     count = 0;
 }
-
 
 /**
  * This function calls a recursive function to traverse the
  * tree in inorder (the wrapper function)
  */
-std::vector<Movie> BinaryTree::inOrder() const
-{
+std::vector<Movie> BinaryTree::inOrder() const {
     std::vector<Movie> inOrdList;
-    _inOrder(root,inOrdList);
+    _inOrder(root, inOrdList);
     return inOrdList;
 }
 
@@ -31,34 +28,22 @@ std::vector<Movie> BinaryTree::inOrder() const
  * This function calls a recursive function to insert the
  * node into the tree in insert (the wrapper function)
  */
-Node* BinaryTree::_insert(Node* nodePtr, Node* newNode)
-{
-
+Node* BinaryTree::_insert(Node* nodePtr, Node* newNode) {
     Node* pWalk = nodePtr;
 
-    if (!nodePtr)
-    {
+    if (!nodePtr) {
         nodePtr = newNode;
         return nodePtr;
-    }
-    else
-    {
-        if (pWalk->getItem().getTitle() > newNode->getItem().getTitle())
-        {
-            if (!pWalk->getLeftPtr())
-            {
+    } else {
+        if (pWalk->getItem().getTitle() > newNode->getItem().getTitle()) {
+            if (!pWalk->getLeftPtr()) {
                 pWalk->setLeftPtr(newNode);
-            }
-            else
+            } else
                 _insert(pWalk->getLeftPtr(), newNode);
-        }
-        else
-        {
-            if(!pWalk->getRightPtr())
-            {
+        } else {
+            if (!pWalk->getRightPtr()) {
                 pWalk->setRightPtr(newNode);
-            }
-            else
+            } else
                 _insert(pWalk->getRightPtr(), newNode);
         }
         return nodePtr;
@@ -69,10 +54,8 @@ Node* BinaryTree::_insert(Node* nodePtr, Node* newNode)
  * Inorder Traversal of the Binary Tree:
  * Left-Root-Right (recursive)
  */
-void BinaryTree::_inOrder(Node* root, std::vector<Movie>& list) const
-{
-    if (root)
-    {
+void BinaryTree::_inOrder(Node* root, std::vector<Movie>& list) const {
+    if (root) {
         _inOrder(root->getLeftPtr(), list);
         list.push_back(root->getItem());
         _inOrder(root->getRightPtr(), list);
@@ -82,8 +65,7 @@ void BinaryTree::_inOrder(Node* root, std::vector<Movie>& list) const
 /**
  * Insert data into a random Binary Tree
  */
-bool BinaryTree::insert(Movie dataIn)
-{
+bool BinaryTree::insert(Movie dataIn) {
     Node* newNodePtr = new Node(dataIn);
     root = _insert(root, newNodePtr);
     count++;
@@ -102,8 +84,7 @@ bool BinaryTree::insert(Movie dataIn)
  * Destructor
  * This function calls a recursive function to delete all nodes in the binary tree
  */
-BinaryTree::~BinaryTree()
-{
+BinaryTree::~BinaryTree() {
     if (root)
         _destroy(root);
 }
@@ -111,104 +92,85 @@ BinaryTree::~BinaryTree()
 /**
  * This function traverses the binary tree in postorder and deletes every node
  */
-void BinaryTree::_destroy(Node* root)
-{
+void BinaryTree::_destroy(Node* root) {
     if (!root)
-     return;
-    
+        return;
+
     _destroy(root->getLeftPtr());
     _destroy(root->getRightPtr());
     delete root;
 }
 
-
 /**
  * This function traverses the binary tree to search for a specific node
  */
-Node* BinaryTree::_finder(Movie dataIn, Node* nodePtr)
-{
-  if(!nodePtr)
-    return nullptr;
+Node* BinaryTree::_finder(Movie dataIn, Node* nodePtr) {
+    if (!nodePtr)
+        return nullptr;
 
-  if(dataIn > nodePtr->getItem())
-   return _finder(dataIn, nodePtr->getRightPtr());
-  if(dataIn < nodePtr->getItem())
-   return _finder(dataIn, nodePtr->getLeftPtr());
-  return nodePtr;
-
+    if (dataIn > nodePtr->getItem())
+        return _finder(dataIn, nodePtr->getRightPtr());
+    if (dataIn < nodePtr->getItem())
+        return _finder(dataIn, nodePtr->getLeftPtr());
+    return nodePtr;
 }
 
 /**
  * This function removes a specific node from the data
  */
-void BinaryTree::_remove(Movie dataIn, Node* rt)
-{
-   Node* locatedNode = _finder(dataIn,rt); 
-    if(locatedNode == nullptr)
-      return; 
-    if(isLeafNode(locatedNode))
-    {
-      Node* pNode = getParent(locatedNode,root);
-      if(pNode->getRightPtr() == locatedNode)
-       { 
-         pNode->setRightPtr(nullptr);
-         delete locatedNode;
-       }
-       else
-        {
-          pNode->setLeftPtr(nullptr);
-          delete locatedNode;
+void BinaryTree::_remove(Movie dataIn, Node* rt) {
+    Node* locatedNode = _finder(dataIn, rt);
+    if (locatedNode == nullptr)
+        return;
+    if (isLeafNode(locatedNode)) {
+        Node* pNode = getParent(locatedNode, root);
+        if (pNode->getRightPtr() == locatedNode) {
+            pNode->setRightPtr(nullptr);
+            delete locatedNode;
+        } else {
+            pNode->setLeftPtr(nullptr);
+            delete locatedNode;
         }
+    }
 
-    }    
-
- 
-  if(locatedNode->getRightPtr())               //Internal Node 
-     {
-	Node* minOrMaxNode = getMin(locatedNode->getRightPtr());
+    if (locatedNode->getRightPtr())  // Internal Node
+    {
+        Node* minOrMaxNode = getMin(locatedNode->getRightPtr());
         Movie temp = locatedNode->getItem();
         locatedNode->setItem(minOrMaxNode->getItem());
-        minOrMaxNode->setItem(temp);        
+        minOrMaxNode->setItem(temp);
         _remove(minOrMaxNode->getItem(), minOrMaxNode);
         return;
-     }
-   else if(locatedNode->getLeftPtr())
-     {
+    } else if (locatedNode->getLeftPtr()) {
         Node* minOrMaxNode = getMax(locatedNode->getLeftPtr());
         Movie temp = locatedNode->getItem();
         locatedNode->setItem(minOrMaxNode->getItem());
-        minOrMaxNode->setItem(temp);        
-	_remove(minOrMaxNode->getItem(), minOrMaxNode);
+        minOrMaxNode->setItem(temp);
+        _remove(minOrMaxNode->getItem(), minOrMaxNode);
         return;
-     }
-    else
-       {
+    } else {
         return;
-       } 
-    
+    }
 }
 
 /**
-* Finds the right-most leaf in the tree
-*/
-Node* BinaryTree::getMax(Node* nodePtr)
-{
-    if(nodePtr->getRightPtr() == nullptr)
-      return nodePtr;
+ * Finds the right-most leaf in the tree
+ */
+Node* BinaryTree::getMax(Node* nodePtr) {
+    if (nodePtr->getRightPtr() == nullptr)
+        return nodePtr;
     else
-     return getMax(nodePtr->getRightPtr());
+        return getMax(nodePtr->getRightPtr());
 }
 
 /**
-* Finds the left-most leaf in the tree
-*/
-Node* BinaryTree::getMin(Node* nodePtr)
-{
-    
-    if(nodePtr->getLeftPtr() == nullptr)
-     return nodePtr;
+ * Finds the left-most leaf in the tree
+ */
+Node* BinaryTree::getMin(Node* nodePtr) {
+    if (nodePtr->getLeftPtr() == nullptr)
+        return nodePtr;
     else
-     return getMin(nodePtr->getLeftPtr());
+        return getMin(nodePtr->getLeftPtr());
 }
 
 /**
@@ -240,35 +202,30 @@ Node* BinaryTree::getParent(Node* child, Node* rt)
 }
 
 /**
-* Function uses depth-first search to find a specific node via the secondary key
-*/
-vector<Movie> BinaryTree::DFS(std::string title)
-{
-  std::stack<Node*> stck;
-  std::vector<Movie> movieList;
-  stck.push(root);
-  _dfs(stck, title, movieList);
-  return movieList;
+ * Function uses depth-first search to find a specific node via the secondary key
+ */
+vector<Movie> BinaryTree::DFS(std::string title) {
+    std::stack<Node*> stck;
+    std::vector<Movie> movieList;
+    stck.push(root);
+    _dfs(stck, title, movieList);
+    return movieList;
 }
 
-void BinaryTree::_dfs(std::stack<Node*>& stk, string title, std::vector<Movie>& list)
-{
-   while(!stk.empty())
-   {
-     Node* nodeptr = stk.top();
-     stk.pop();
-     if(nodeptr->getItem().getTitle() == title)
-        list.push_back(nodeptr->getItem());
-     if(nodeptr->getRightPtr())
-      {
-       stk.push(nodeptr->getRightPtr()); 
-       _dfs(stk, title, list);
-      }
-     if(nodeptr->getLeftPtr())
-       stk.push(nodeptr->getLeftPtr());
-       _dfs(stk, title, list);
-   }
-
+void BinaryTree::_dfs(std::stack<Node*>& stk, string title, std::vector<Movie>& list) {
+    while (!stk.empty()) {
+        Node* nodeptr = stk.top();
+        stk.pop();
+        if (nodeptr->getItem().getTitle() == title)
+            list.push_back(nodeptr->getItem());
+        if (nodeptr->getRightPtr()) {
+            stk.push(nodeptr->getRightPtr());
+            _dfs(stk, title, list);
+        }
+        if (nodeptr->getLeftPtr())
+            stk.push(nodeptr->getLeftPtr());
+        _dfs(stk, title, list);
+    }
 }
 
 //Prints tree as an indented list

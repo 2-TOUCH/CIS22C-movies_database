@@ -1,18 +1,18 @@
 #pragma once
 
-#include <vector>
 #include <stack>
+#include <vector>
 
-#include "MovieDB.h"
 #include "FileLoader.h"
 #include "FileWriter.h"
+#include "MovieDB.h"
 
 /**
  * App class that integrate all the other classes to implement the program
  * the main responsibility is dealing with user input and output
  */
 class App {
-public:
+  public:
     App() = default;
     ~App() = default;
 
@@ -20,7 +20,8 @@ public:
      * run the program
      */
     int run();
-private:
+
+  private:
     void printMenu();
 
     void processLoadFileCmd();

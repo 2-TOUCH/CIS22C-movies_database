@@ -1,13 +1,14 @@
 #pragma once
 
 #include <fstream>
+
 #include "MovieDB.h"
 
 /**
  * File loader that reads txt file and insert movie to MovieDB
  */
 class FileLoader {
-public:
+  public:
     /**
      * Constructor
      * @param stream ifstream object that has been opened with movie file
@@ -20,6 +21,7 @@ public:
      * @param db MovieDB reference
      */
     void load(MovieDB& db);
-private:
+
+  private:
     std::ifstream file;
 };

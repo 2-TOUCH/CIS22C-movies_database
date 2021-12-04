@@ -1,7 +1,9 @@
 #include "FIleLoader.h"
+
 #include "Util.h"
 
-FileLoader::FileLoader(std::ifstream&& stream) : file(std::move(stream)) {
+FileLoader::FileLoader(std::ifstream&& stream)
+    : file(std::move(stream)) {
 }
 
 void FileLoader::load(MovieDB& db) {
@@ -14,7 +16,7 @@ void FileLoader::load(MovieDB& db) {
         lines.emplace_back(line);
     }
 
-    db.reserveHashBuckets(lines.size()); // preallocate hash table; lines.size == movies.size
+    db.reserveHashBuckets(lines.size());  // preallocate hash table; lines.size == movies.size
 
     for (const auto& line : lines) {
         auto tokens = split(line, "^");

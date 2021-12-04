@@ -1,11 +1,11 @@
 #pragma once
 
-#include <string>
 #include <functional>
+#include <string>
 #include <vector>
 
-#include "Movie.h"
 #include "HashTable.h"
+#include "Movie.h"
 #include "MovieBST.h"
 
 uint64_t movieIDHasher(const MovieID& id);
@@ -22,7 +22,7 @@ struct MovieDBDSStats {
  * Movie database that internally uses both BST and hash table to support required operations efficiently.
  */
 class MovieDB {
-public:
+  public:
     MovieDB();
     ~MovieDB();
 
@@ -76,5 +76,4 @@ public:
 private:
     HashTable<MovieID, Movie> hashTable;
     BinaryTree BST;
-
 };

@@ -1,7 +1,8 @@
 #pragma once
 
-#include <vector>
 #include <functional>
+#include <vector>
+
 #include "LinkedList.h"
 
 /**
@@ -10,37 +11,32 @@
  * @param Key the type of the key
  * @param Value the type of the entry
  */
-template<typename Key, typename Value>
+template <typename Key, typename Value>
 class HashTable {
-public:
+  public:
     using Hasher = std::function<uint64_t(const Key&)>;
     /**
      * Constructor
      * @param hasher the hash function that receives Key type and returns uint64_t value
      * @param bucketsCount the initial bucket count
      */
-    HashTable(const Hasher& hasher, size_t bucketsCount) : 
-        hasher(hasher), 
-        bucketsCount(bucketsCount), 
-        buckets(new LinkedList<Item>[bucketsCount]) {
+    HashTable(const Hasher& hasher, size_t bucketsCount)
+        : hasher(hasher), bucketsCount(bucketsCount), buckets(new LinkedList<Item>[bucketsCount]) {
     }
 
     /**
      * Destructor
      */
     ~HashTable() {
-	   delete[] buckets;
+        delete[] buckets;
     }
 
     /**
      * Copy constructor
      * It copies all the values from scratch. O(n)
      */
-    HashTable(const HashTable& other) :
-        bucketsCount(other.bucketsCount),
-        buckets(new LinkedList<Item>[other.bucketsCount]),
-        numberOfCollisions(other.numberOfCollisions),
-        filledBuckets(other.filledBuckets) {
+    HashTable(const HashTable& other)
+        : bucketsCount(other.bucketsCount), buckets(new LinkedList<Item>[other.bucketsCount]), numberOfCollisions(other.numberOfCollisions), filledBuckets(other.filledBuckets) {
         for (int i = 0; i < other.bucketsCount; i++) {
             buckets[i] = other.buckets[i];
         }
@@ -101,12 +97,17 @@ public:
     void add(const Key& key, const Value& value) {
         auto hash = hashKey(key);
         auto& bucket = buckets[hash];
-        if (bucket.empty()) {
-            filledBuckets++;
+        auto it = bucket.find({ key });
+        if (it != bucket.end()) {
+            (*it).value = value;
         } else {
-            numberOfCollisions++;
+            if (bucket.empty()) {
+                filledBuckets++;
+            } else {
+                numberOfCollisions++;
+            }
+            bucket.pushBack({ key, value });
         }
-        bucket.pushBack({key, value});
     }
 
     /**
@@ -116,7 +117,7 @@ public:
     void remove(const Key& key) {
         auto hash = hashKey(key);
         auto& bucket = buckets[hash];
-        auto it = bucket.find({key});
+        auto it = bucket.find({ key });
         if (it == bucket.end()) {
             return;
         }
@@ -135,7 +136,7 @@ public:
     bool remove(const Key& key, Value& value) {
         auto hash = hashKey(key);
         auto& bucket = buckets[hash];
-        auto it = bucket.find({key});
+        auto it = bucket.find({ key });
         if (it == bucket.end()) {
             return false;
         }
@@ -156,7 +157,7 @@ public:
     bool find(const Key& key, Value& value) const {
         auto hash = hashKey(key);
         auto& bucket = buckets[hash];
-        auto it = bucket.find({key});
+        auto it = bucket.find({ key });
         if (it == bucket.end()) {
             return false;
         }
@@ -214,7 +215,7 @@ public:
         bucketsCount = newBuckets;
         numberOfCollisions = 0;
         filledBuckets = 0;
-        
+
         for (size_t i = 0; i < oldBucketsCount; i++) {
             auto& bucket = oldBuckets[i];
             for (auto it = bucket.begin(); it != bucket.end(); ++it) {
@@ -222,18 +223,12 @@ public:
             }
         }
     }
-private:
+
+  private:
     struct Item {
         Key key;
         Value value;
-	
-	/**
-	Overloaded Operators
-	
-	*Overloads == to compare the keys
-	*Overloads != to compare the keys
-	
-	**/
+
         bool operator==(const Item& other) const {
             return key == other.key;
         }
@@ -247,8 +242,8 @@ private:
     }
 
     Hasher hasher;
-    size_t bucketsCount{0};
-    LinkedList<Item>* buckets{nullptr};
-    size_t numberOfCollisions{0};
-    size_t filledBuckets{0};
+    size_t bucketsCount{ 0 };
+    LinkedList<Item>* buckets{ nullptr };
+    size_t numberOfCollisions{ 0 };
+    size_t filledBuckets{ 0 };
 };

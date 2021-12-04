@@ -1,4 +1,5 @@
 #include "App.h"
+
 #include <iostream>
 #include <vector>
 
@@ -14,7 +15,7 @@ int App::run() {
     bool quit = false;
     std::cout << "*****Welcome to Movies Database      *****" << std::endl;
     std::cout << "*****Abdullah, Arnesh, Sunho, Ulysses*****" << std::endl;
-    while(!quit) {
+    while (!quit) {
         printMenu();
         char choice;
         std::cin >> choice;
@@ -73,7 +74,6 @@ int App::run() {
          break;
        default:
             std::cout << "Invalid choice" << std::endl;
-        }
     }
     return 0;
 }
@@ -91,14 +91,10 @@ void App::printMenu() {
     std::cout << "Undo movie deletion: u" << std::endl;
 
     std::cout << "Exit: e" << std::endl;
-
 }
 
-
-
-//Function loads the input file
+// Function loads the input file
 void App::processLoadFileCmd() {
-
     std::cout << std::endl;
     std::cout << "Input file name:";
     std::string fileName;
@@ -111,18 +107,20 @@ void App::processLoadFileCmd() {
     }
 
     try {
-        //resetMovieDB();
+        // resetMovieDB();
         FileLoader fileLoader(std::move(file));
         fileLoader.load(movieDB);
     } catch (std::exception& e) {
         std::cout << e.what() << std::endl;
     }
-    std::cout << "File loaded" << std::endl << std::endl;
+    std::cout << "File loaded" << std::endl
+              << std::endl;
 }
 
-//Function saves the data into a file
+// Function saves the data into a file
 void App::processSaveFileCmd() {
-    std::cout << std::endl << "Input file name:";
+    std::cout << std::endl
+              << "Input file name:";
     std::string fileName;
     std::cin >> fileName;
 
@@ -138,13 +136,14 @@ void App::processSaveFileCmd() {
     } catch (std::exception& e) {
         std::cout << e.what() << std::endl;
     }
-    std::cout << "File saved" << std::endl << std::endl;
+    std::cout << "File saved" << std::endl
+              << std::endl;
 }
 
-//Function searches through the primary keys
+// Function searches through the primary keys
 void App::processSearchByKeyCmd() {
-
-    std::cout << std::endl << "Input primary key:";
+    std::cout << std::endl
+              << "Input primary key:";
     std::string key;
     std::getline(std::cin, key);
 
@@ -154,27 +153,31 @@ void App::processSearchByKeyCmd() {
         movie.vDisplay(std::cout);
         std::cout << std::endl;
     } else {
-        std::cout << "Movie not found" << std::endl << std::endl;
+        std::cout << "Movie not found" << std::endl
+                  << std::endl;
     }
 }
 
-//Function deletes Movie object from list
+// Function deletes Movie object from list
 void App::processDeleteByKeyCmd() {
-    std::cout << std::endl << "Input primary key:";
+    std::cout << std::endl
+              << "Input primary key:";
     std::string key;
     std::getline(std::cin, key);
 
     Movie movie;
     bool deleted = movieDB.deleteMovieByID(key, movie);
     if (deleted) {
-        std::cout << "Movie deleted" << std::endl << std::endl;
+        std::cout << "Movie deleted" << std::endl
+                  << std::endl;
         deletedMovieStack.push(movie);
     } else {
-        std::cout << "Movie not found" << std::endl << std::endl;
+        std::cout << "Movie not found" << std::endl
+                  << std::endl;
     }
 }
 
-//Function undos delete
+// Function undos delete
 void App::processUndoDeleteCmd() {
     if (deletedMovieStack.empty()) {
         std::cout << "No more movie delete to undo" << std::endl;
@@ -187,33 +190,33 @@ void App::processUndoDeleteCmd() {
     movie.vDisplay(std::cout);
 }
 
-//Function searches via secondary key
-void App::processSearchByTitleCmd()
-{
-    std::cout << std::endl << "Input Secondary key:";
+// Function searches via secondary key
+void App::processSearchByTitleCmd() {
+    std::cout << std::endl
+              << "Input Secondary key:";
     std::string key;
     std::getline(std::cin, key);
     std::vector<Movie> movieList = movieDB.findMovieByTitle(key);
 
-    if(movieList.size() > 0)
-    {
-      for(int i = 0; i < movieList.size(); i++)
-       movieList[i].vDisplay(std::cout);
-      std::cout << std::endl;
-    }
-    else
-      std::cout << "Movie not found" << std::endl << std::endl;
+    if (movieList.size() > 0) {
+        for (int i = 0; i < movieList.size(); i++)
+            movieList[i].vDisplay(std::cout);
+        std::cout << std::endl;
+    } else
+        std::cout << "Movie not found" << std::endl
+                  << std::endl;
 }
 
-//Adds a new movie into the list
-void App::processAddCmd(){
+// Adds a new movie into the list
+void App::processAddCmd() {
     std::string primaryK;
     std::string title;
     std::string lang;
     int year;
     std::string direc;
     bool rating;
-    std::cout << std::endl << "Enter Primary Key:";
+    std::cout << std::endl
+              << "Enter Primary Key:";
     std::getline(std::cin, primaryK);
     std::cout << "Enter Title:";
     std::getline(std::cin, title);
@@ -225,28 +228,27 @@ void App::processAddCmd(){
     std::cout << "Enter Director:";
     std::getline(std::cin, direc);
     std::cout << "Enter rating(1=Adult/0=NoAdult):";
-    std::cin >>  rating;
+    std::cin >> rating;
     Movie movie(primaryK, title, lang, year, direc, rating);
     movieDB.addMovie(movie);
 
     std::cout << std::endl;
 }
 
-//Display all movies
-void App::processDisplayAllKeyCmd()
-{
-   std::cout << std::endl;
-   std::cout << "All Movies In List" << std::endl;
-   std::cout << "==================" << std::endl;
+// Display all movies
+void App::processDisplayAllKeyCmd() {
+    std::cout << std::endl;
+    std::cout << "All Movies In List" << std::endl;
+    std::cout << "==================" << std::endl;
 
+    std::vector<Movie> list;
+    list = movieDB.listMovieSortedByTitle();
+    for (int i = 0; i < list.size(); i++)
+        std::cout << list[i];
 
-   std::vector<Movie> list;
-   list = movieDB.listMovieSortedByTitle();
-   for(int i = 0; i < list.size(); i++)
-     std::cout << list[i];
-
-   std::cout << std::endl;
+    std::cout << std::endl;
 }
+<<<<<<< Updated upstream
 
 //Display Team Members(Hidden Feature)
 void App::processDisplayAllMemCmd()
@@ -274,3 +276,5 @@ void App::processDisplayIndentedTreeCmd()
 
 
 
+=======
+>>>>>>> Stashed changes

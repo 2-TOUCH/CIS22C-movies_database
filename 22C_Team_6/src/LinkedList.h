@@ -3,27 +3,39 @@
 /**
  * Linked list implementation internally used by HashTable
  */
-template<typename T>
+template <typename T>
 class LinkedList {
-public:  
+  public:
     struct Node {
         T value{};
-        Node* prev{nullptr};
-        Node* next{nullptr};
+        Node* prev{ nullptr };
+        Node* next{ nullptr };
     };
 
     // Iterator class
     class Iterator {
-    public:
-        Iterator(Node* node) : node(node) {}
-        T& operator*() { return node->value; }
-        Iterator& operator++() { node = node->next; return *this; }
-        bool operator==(const Iterator& other) { return node == other.node; }
-        bool operator!=(const Iterator& other) { return node != other.node; }
+      public:
+        Iterator(Node* node)
+            : node(node) {
+        }
+        T& operator*() {
+            return node->value;
+        }
+        Iterator& operator++() {
+            node = node->next;
+            return *this;
+        }
+        bool operator==(const Iterator& other) {
+            return node == other.node;
+        }
+        bool operator!=(const Iterator& other) {
+            return node != other.node;
+        }
         Node* node;
     };
 
-    LinkedList() : size_(0) {
+    LinkedList()
+        : size_(0) {
         // head and tail sentinetals
         head = new Node();
         tail = new Node();
@@ -39,7 +51,7 @@ public:
         }
         delete head;
         delete tail;
-     }
+    }
 
     /**
      * Copy constructor
@@ -115,14 +127,13 @@ public:
      * @param it the iterator point to remove
      */
     Iterator remove(const Iterator& it) {
-        
         auto node = it.node;
         auto next = node->next;
         auto prev = node->prev;
 
         prev->next = next;
         next->prev = prev;
-       
+
         delete node;
 
         size_--;
@@ -133,13 +144,17 @@ public:
      * Returns the iterator pointing to the first element
      * @return begin iterator
      */
-    Iterator begin() const { return Iterator(head->next); }
+    Iterator begin() const {
+        return Iterator(head->next);
+    }
 
     /**
      * Returns the iterator pointing to the tail sentinetal node
      * @return end iterator
      */
-    Iterator end() const { return Iterator(tail); }
+    Iterator end() const {
+        return Iterator(tail);
+    }
 
     /**
      * Find the iterator pointing to the element with the specified value
@@ -156,7 +171,7 @@ public:
     /**
      * Returns the number of elements in the list
      * @return number of elements
-      */
+     */
     size_t size() const {
         return size_;
     }
@@ -164,11 +179,12 @@ public:
     /**
      * Is this list empty?
      * @return true if empty, false otherwise
-      */
+     */
     bool empty() const {
         return size_ == 0;
     }
-private:
+
+  private:
     Node* head = new Node;
     Node* tail = new Node;
     size_t size_;
