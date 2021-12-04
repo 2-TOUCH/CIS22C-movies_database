@@ -34,9 +34,11 @@ class App {
     void processUndoDeleteCmd();
     void processDisplayAllKeyCmd();
     void processDisplayAllMemCmd();
-    void processDisplayHashStatsCmd() const;   
+    void processDisplayHashStatsCmd() const;
     void processDisplayIndentedTreeCmd();
-    void resetMovieDB() { movieDB = MovieDB(); }
+    void resetMovieDB() {
+        movieDB = MovieDB();
+    }
 
     MovieDB movieDB;
     std::stack<Movie> deletedMovieStack;

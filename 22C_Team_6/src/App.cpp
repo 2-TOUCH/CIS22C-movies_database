@@ -3,9 +3,8 @@
 #include <iostream>
 #include <vector>
 
-//Function for the indented Tree display
-void visit(Movie&item, int level)
-{
+// Function for the indented Tree display
+void visit(Movie& item, int level) {
     for (int i = 1; i < level; i++)
         std::cout << "..";
     std::cout << level << "). " << item.getTitle() << std::endl;
@@ -20,60 +19,61 @@ int App::run() {
         char choice;
         std::cin >> choice;
         std::cin.ignore();
-        switch(choice) {
-        case 'l':
-            processLoadFileCmd();
-            break;
-        case 'L':
-            processLoadFileCmd();
-            break;
-        case 'p':
-            processSearchByKeyCmd();
-            break;
-        case 'P':
-            processSearchByKeyCmd();
-            break;
-        case 'd':
-            processDeleteByKeyCmd();
-            break;
-        case 'D':
-            processDeleteByKeyCmd();
-            break;
-        case 'I':
- 	    processDisplayHashStatsCmd();
-	    break;
-        case 'u':
-            processUndoDeleteCmd();
-            break;
-        case 'U':
-            processUndoDeleteCmd();
-            break;
-  	case 's':
-	    processSearchByTitleCmd();
-	    break;
-        case 'a':
-	    processDisplayAllKeyCmd();
-	    break;
-        case 'e':
-            quit = true;
-	     break;
-       case 'A':
-           processAddCmd();
-           break;
-       case 'S':
-           processSaveFileCmd();
-           break;
-       case 'H':
-           continue;
-	   break;
-       case 'h':
-          processDisplayAllMemCmd();
-          break;
-       case 'z':
-         processDisplayIndentedTreeCmd();
-         break;
-       default:
-            std::cout << "Invalid choice" << std::endl;
+        switch (choice) {
+            case 'l':
+                processLoadFileCmd();
+                break;
+            case 'L':
+                processLoadFileCmd();
+                break;
+            case 'p':
+                processSearchByKeyCmd();
+                break;
+            case 'P':
+                processSearchByKeyCmd();
+                break;
+            case 'd':
+                processDeleteByKeyCmd();
+                break;
+            case 'D':
+                processDeleteByKeyCmd();
+                break;
+            case 'I':
+                processDisplayHashStatsCmd();
+                break;
+            case 'u':
+                processUndoDeleteCmd();
+                break;
+            case 'U':
+                processUndoDeleteCmd();
+                break;
+            case 's':
+                processSearchByTitleCmd();
+                break;
+            case 'a':
+                processDisplayAllKeyCmd();
+                break;
+            case 'e':
+                quit = true;
+                break;
+            case 'A':
+                processAddCmd();
+                break;
+            case 'S':
+                processSaveFileCmd();
+                break;
+            case 'H':
+                continue;
+                break;
+            case 'h':
+                processDisplayAllMemCmd();
+                break;
+            case 'z':
+                processDisplayIndentedTreeCmd();
+                break;
+            default:
+                std::cout << "Invalid choice" << std::endl;
+        }
     }
     return 0;
 }
@@ -248,33 +248,26 @@ void App::processDisplayAllKeyCmd() {
 
     std::cout << std::endl;
 }
-<<<<<<< Updated upstream
 
-//Display Team Members(Hidden Feature)
-void App::processDisplayAllMemCmd()
-{
-   std::cout << std::endl << std::endl << "Team 6 Members" << std::endl;
-   std::cout << "Abdullah, Arnesh, Sunho, Ul" << std::endl;
-   std::cout << "*****Abdullah, Arnesh, Sunho, Ulysses*****" << std::endl << std::endl;
-
+// Display Team Members(Hidden Feature)
+void App::processDisplayAllMemCmd() {
+    std::cout << std::endl
+              << std::endl
+              << "Team 6 Members" << std::endl;
+    std::cout << "Abdullah, Arnesh, Sunho, Ul" << std::endl;
+    std::cout << "*****Abdullah, Arnesh, Sunho, Ulysses*****" << std::endl
+              << std::endl;
 }
 
-//Display Hash Table Statistics
-void App::processDisplayHashStatsCmd() const
-{
-   MovieDBDSStats stats = movieDB.getDataStructureStats(); 
-   std::cout << "Hash Table Statistics:" << std::endl;
-   std::cout << "Load Factor: " << stats.hashTableLoadFactor << std::endl;
-   std::cout << "Bucket Count: " << stats.hashTableBucketsCount << std::endl;
-   std::cout << "Num of Collisions: " << stats.hashTableNumCollisions << std::endl;
+// Display Hash Table Statistics
+void App::processDisplayHashStatsCmd() const {
+    MovieDBDSStats stats = movieDB.getDataStructureStats();
+    std::cout << "Hash Table Statistics:" << std::endl;
+    std::cout << "Load Factor: " << stats.hashTableLoadFactor << std::endl;
+    std::cout << "Bucket Count: " << stats.hashTableBucketsCount << std::endl;
+    std::cout << "Num of Collisions: " << stats.hashTableNumCollisions << std::endl;
 }
 
-void App::processDisplayIndentedTreeCmd()
-{
-   movieDB.printIndentedTree(visit);   
+void App::processDisplayIndentedTreeCmd() {
+    movieDB.printIndentedTree(visit);
 }
-
-
-
-=======
->>>>>>> Stashed changes

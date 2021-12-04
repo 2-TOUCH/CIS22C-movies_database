@@ -174,31 +174,29 @@ Node* BinaryTree::getMin(Node* nodePtr) {
 }
 
 /**
-* Removes data from the binary tree
-*/
-bool BinaryTree::remove(Movie dataIn)
-{
-        _remove(dataIn, root);
-        count--;
-       
-   return true;
+ * Removes data from the binary tree
+ */
+bool BinaryTree::remove(Movie dataIn) {
+    _remove(dataIn, root);
+    count--;
+
+    return true;
 }
 
 /**
-* Finds a leafs parent in the binary tree
-*/
-Node* BinaryTree::getParent(Node* child, Node* rt)
-{
-   if(!rt)
-     return nullptr;
-   Node* parentNode = rt;
-   if(rt->getRightPtr() && rt->getRightPtr() == child)
-     return parentNode;
-   if(rt->getLeftPtr() && rt->getLeftPtr() == child)
-     return parentNode;
-   if(getParent(child, parentNode->getRightPtr()))
-     return getParent(child,parentNode->getRightPtr());
-   return getParent(child, parentNode->getLeftPtr());
+ * Finds a leafs parent in the binary tree
+ */
+Node* BinaryTree::getParent(Node* child, Node* rt) {
+    if (!rt)
+        return nullptr;
+    Node* parentNode = rt;
+    if (rt->getRightPtr() && rt->getRightPtr() == child)
+        return parentNode;
+    if (rt->getLeftPtr() && rt->getLeftPtr() == child)
+        return parentNode;
+    if (getParent(child, parentNode->getRightPtr()))
+        return getParent(child, parentNode->getRightPtr());
+    return getParent(child, parentNode->getLeftPtr());
 }
 
 /**
@@ -228,14 +226,13 @@ void BinaryTree::_dfs(std::stack<Node*>& stk, string title, std::vector<Movie>& 
     }
 }
 
-//Prints tree as an indented list
-void BinaryTree::_printTree(void visit(Movie&, int), Node* nodePtr, int level) const
-{
- if (nodePtr) // != NULL
+// Prints tree as an indented list
+void BinaryTree::_printTree(void visit(Movie&, int), Node* nodePtr, int level) const {
+    if (nodePtr)  // != NULL
     {
         Movie item = nodePtr->getItem();
-        visit(item,level);
-        _printTree(visit, nodePtr->getRightPtr(), level+1);
-        _printTree(visit, nodePtr->getLeftPtr(), level+1);
+        visit(item, level);
+        _printTree(visit, nodePtr->getRightPtr(), level + 1);
+        _printTree(visit, nodePtr->getLeftPtr(), level + 1);
     }
 }
