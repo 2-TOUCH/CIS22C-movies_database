@@ -1,3 +1,13 @@
+/**
+File/IO Abdullah Malik
+
+The following contains functions that help write a file similar to the one read.
+It takes all the variables from each movie in the BST and adds them accordingly.
+There were little challenges in this function as most of the additions could be 
+made manually.
+
+**/
+
 #include "FileWriter.h"
 
 FileWriter::FileWriter(std::ofstream&& file)
