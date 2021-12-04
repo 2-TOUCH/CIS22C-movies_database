@@ -1,0 +1,8 @@
+/**
+File/IO Abdullah Malik
+The following contains functions that allows the program to load the file and read it. 
+It also saves each of the different variables in the movies contained in the file. It
+then adds all movies to the BST and sorts them accordingly.
+Challenges:
+-Working with vectors proved to be a challenge but I managed to get help from other group members as well
+**/

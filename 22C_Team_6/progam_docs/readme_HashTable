@@ -1,0 +1,8 @@
+Sunho Kim
+
+Hash Table was implementing with linked list collision resolution.
+Hash Table Data Structure was implemented to get a O(1) when searching for a movie.
+
+Challenge:
+Encountered a memory issue where we used "delete" where we should've used "delete[]." 
+It resulted in a crash when exiting the program. The crash was fixed by using the correct "delete[]."`

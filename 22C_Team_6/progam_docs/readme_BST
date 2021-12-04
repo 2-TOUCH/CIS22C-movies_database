@@ -1,0 +1,10 @@
+BST: Ulysses Morgan
+The BST Data Structure was used to store the Movies via the Secondary Key.
+The movie title's string were inserted into the BST via ASCII Comparison.
+
+Challenges Faced:
+- Deleting a Movie and still preserving BST property. Movie(Node) to be deleted
+  was propogated to the leaf, and the leaf's parent's respective child was deleted/pointed to null.
+
+- Finding movies with the same Title was solved using a DFS search.
+  Multiple movies with the same title was then extracted with the DFS search.
