@@ -1,0 +1,27 @@
+(base) Arneshs-iMac:src arneshregmi$ ./a.out
+*****Welcome to Movies Database      *****
+*****Abdullah, Arnesh, Sunho, Ulysses*****
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+H
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+

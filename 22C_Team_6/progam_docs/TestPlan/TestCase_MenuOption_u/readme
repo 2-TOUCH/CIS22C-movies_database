@@ -1,0 +1,7 @@
+This test case demonstrates the undo feature of the program
+The undo feature is executed with menu option 'u'
+
+This test case consists of:
+   TC1. Delete one movie => undo will re populate the movie into the Database.
+   TC2. Delete n number of movies => undo n times to repopulate n deleted movies. 
+   TC3. Delete 0 movies => Undo prints "Undo denied" message. 

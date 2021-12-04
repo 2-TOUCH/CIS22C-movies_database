@@ -1,0 +1,5 @@
+This test case demonstrates the Help Option of the program
+The help is executed with menu option 'H'
+
+This test case consists of:
+   TC1: Input the help option 'H' => Populate Program Menu

@@ -1,0 +1,10 @@
+This test case demonstrates the delete by Primary Key Option of the program
+The delete by Primary Key is executed with menu option 'd/D' option
+
+This test case consists of:
+   TC1. Delete by Primary Key on Empty Database   =>  Not found 
+   TC2. Delete by Primary Key on Populated Databse => Use search by primary key to prove the movie is deleted 
+   TC3. Delete by an incorrect Primary Key on Populated Database = > Not found
+~
+~                                                                                                   
+~                                                                                  

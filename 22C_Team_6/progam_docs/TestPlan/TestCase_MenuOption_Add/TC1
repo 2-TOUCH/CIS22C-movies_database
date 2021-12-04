@@ -1,0 +1,53 @@
+(base) Arneshs-iMac:src arneshregmi$ ./a.out
+*****Welcome to Movies Database      *****
+*****Abdullah, Arnesh, Sunho, Ulysses*****
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+A
+
+Enter Primary Key:Casino Royale-123
+Enter Title:James Bond Casino Royale
+Enter Language:EN
+Enter release year:2008
+Enter Director:James Cameroon
+Enter rating(1=Adult/0=NoAdult):1
+
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+a
+
+All Movies In List
+==================
+James Bond Casino Royale
+
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+e
+

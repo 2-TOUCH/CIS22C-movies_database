@@ -1,0 +1,5 @@
+This test case demonstrates the hidden menu 'h' of the program
+The 'h' menu shows the names of the developers who wrote this program. 
+
+This test case consists of:
+   TC1. 'h' menu option => show the name of the developers. 

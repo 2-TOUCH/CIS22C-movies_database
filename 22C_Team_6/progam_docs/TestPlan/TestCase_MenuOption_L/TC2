@@ -1,0 +1,60 @@
+(base) Arneshs-iMac:src arneshregmi$ cat erroneous.txt 
+sod;asfaoisdjfa
+fadfjao;jdf;oasf
+
+a
+fdajdsjf
+
+
+asf;oai
+ejio;o
+(base) Arneshs-iMac:src arneshregmi$ ./a.out
+*****Welcome to Movies Database      *****
+*****Abdullah, Arnesh, Sunho, Ulysses*****
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+l
+
+Input file name:erroneous.txt
+Invalid file format: number of fields is invalid
+File loaded
+
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+a
+
+All Movies In List
+==================
+
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+e
+(base) Arneshs-iMac:src arneshregmi$ 
+

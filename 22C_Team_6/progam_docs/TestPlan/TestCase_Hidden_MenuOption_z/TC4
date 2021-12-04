@@ -1,0 +1,143 @@
+(base) Arneshs-iMac:src arneshregmi$ ./a.out
+*****Welcome to Movies Database      *****
+*****Abdullah, Arnesh, Sunho, Ulysses*****
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+l
+
+Input file name:Movies.txt
+File loaded
+
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+z
+1). The Messers. Lumière at Cards
+..2). The Oxford and Cambridge University Boat Race
+....3). Un bon bock
+......4). tHd Messers. Lumière at Cards
+......4). The Waterer Watered
+........5). The Photographical Congress Arrives in Lyon
+..2). Chinese Opium Den
+....3). Pauvre Pierrot
+......4). The Clown Barber
+........5). The Derby 1895
+........5). The Arrival of a Train
+......4). Opening of the Kiel Canal
+........5). Le clown et ses chiens
+..........6). Leaving the Factory
+............7). Miss Jerry
+..........6). Corbett and Courtney Before the Kinetograph
+............7). Italienischer Bauerntanz
+..............8). Das boxende Känguruh
+................9). Edison Kinetoscopic Record of a Sneeze
+....3). Blacksmith Scene
+......4). Blacksmithing Scene
+........5). Carmencita
+..........6). Boat Leaving the Port
+......4). Akrobatisches Potpourri
+........5). Autour d'une cabine
+..........6). Baignade en mer
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+s
+
+Input Secondary key:The Oxford and Cambridge University Boat Race
+ID: The Oxford and Cambridge University Boat Race-25
+Title: The Oxford and Cambridge University Boat Race
+Language: GB
+Year: 1895
+Director: Birt Acres
+Is Adult: 0
+
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+d
+
+Input primary key:The Oxford and Cambridge University Boat Race-25
+Movie deleted
+
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+z
+1). The Messers. Lumière at Cards
+..2). The Photographical Congress Arrives in Lyon
+....3). Un bon bock
+......4). tHd Messers. Lumière at Cards
+......4). The Waterer Watered
+..2). Chinese Opium Den
+....3). Pauvre Pierrot
+......4). The Clown Barber
+........5). The Derby 1895
+........5). The Arrival of a Train
+......4). Opening of the Kiel Canal
+........5). Le clown et ses chiens
+..........6). Leaving the Factory
+............7). Miss Jerry
+..........6). Corbett and Courtney Before the Kinetograph
+............7). Italienischer Bauerntanz
+..............8). Das boxende Känguruh
+................9). Edison Kinetoscopic Record of a Sneeze
+....3). Blacksmith Scene
+......4). Blacksmithing Scene
+........5). Carmencita
+..........6). Boat Leaving the Port
+......4). Akrobatisches Potpourri
+........5). Autour d'une cabine
+..........6). Baignade en mer
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+

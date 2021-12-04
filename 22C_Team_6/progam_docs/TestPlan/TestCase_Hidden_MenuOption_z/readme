@@ -1,0 +1,9 @@
+This test case demonstrates the hidden menu 'z' of the program
+The 'z' menu shows the underlying BST pictorally for debugging purposes.
+
+This test case consists of:
+   TC1. Menu option 'z' => Show the indented BST
+   TC2. Delete the Root => Show new Root not does disobey BST property
+   TC3. Delete a leaf Node => Show the BST
+   TC4. Delete an inode Node => Show the BST does not disobey BST property
+   TC5. Delete on an empty Database => BST should be empty

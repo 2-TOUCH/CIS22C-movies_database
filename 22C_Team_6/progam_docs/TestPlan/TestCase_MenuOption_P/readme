@@ -1,0 +1,8 @@
+This test case demonstrates the search by Primary Key Option of the program
+The search by Primary Key is executed with menu option 'p/P'
+
+This test case consists of:
+   TC1. Search by Primary Key on Empty Database   =>  Not found
+   TC2. Search by Primary Key on Populated Databse => Print Movie Details
+   TC3. Search by an incorrect Primary Key on Populated Database = > Not found
+~                                                      

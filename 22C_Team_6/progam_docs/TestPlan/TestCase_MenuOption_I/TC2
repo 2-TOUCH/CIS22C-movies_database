@@ -1,0 +1,78 @@
+*****Welcome to Movies Database      *****
+*****Abdullah, Arnesh, Sunho, Ulysses*****
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+l
+
+Input file name:Movies.txt
+File loaded
+
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+I
+Hash Table Statistics:
+Load Factor: 0.5
+Bucket Count: 52
+Num of Collisions: 0
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+l Movies.txt
+
+Input file name:File loaded
+
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+I
+Hash Table Statistics:
+Load Factor: 0.769231
+Bucket Count: 26
+Num of Collisions: 6
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+e 
+

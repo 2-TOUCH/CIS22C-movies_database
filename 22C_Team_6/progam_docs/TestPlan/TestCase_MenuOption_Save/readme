@@ -1,0 +1,6 @@
+This test case demonstrates the Save Option of the program.
+The Save option is executed with menu option 'S'.
+
+This test case consists of:
+   TC1: Input Menu Option 'S' => Save the database to File in the correct format(How it was read from file).
+   TC2: Save Database to File and Read => Proves the written file can be read back to populate the Database.

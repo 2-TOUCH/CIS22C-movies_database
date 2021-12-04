@@ -1,0 +1,105 @@
+(base) Arneshs-iMac:src arneshregmi$ cat Movies_Synonymns.txt 
+The Messers. Lumière at Cards-26^The Messers. Lumière at Cards^US^1896^Louis Lumière^0
+Chinese Opium Den-6^Chinese Opium Den^US^1894^William K.L. Dickson^0
+Pauvre Pierrot-3^Pauvre Pierrot^FR^1892^Émile Reynaud^0
+Opening of the Kiel Canal-24^Opening of the Kiel Canal^GB^1895^Birt Acres^0
+The Oxford and Cambridge University Boat Race-25^The Oxford and Cambridge University Boat Race^GB^1895^Birt Acres^0
+The Clown Barber-19^The Clown Barber^GB^1898^James Williamson^0
+Blacksmith Scene-22^Blacksmith Scene^US^1895^Louis Lumière^0
+Akrobatisches Potpourri-11^Akrobatisches Potpourri^DE^1895^Max Skladanowsky^0
+Un bon bock-4^Un bon bock^FR^1892^Émile Reynaud^0
+The Waterer Watered-14^The Waterer Watered^US^1895^Louis Lumière^0
+Le clown et ses chiens-2^Le clown et ses chiens^FR^1892^ Émile Reynaud^0
+Corbett and Courtney Before the Kinetograph-7^Corbett and Courtney Before the Kinetograph^US^1894^William K.L. Dickson^0
+Blacksmithing Scene-5^Blacksmithing Scene^US^1893^William K.L. Dickson^0
+Autour d'une cabine-15^Autour d'une cabine^FR^1894^Émile Reynaud^0
+Italienischer Bauerntanz-17^Italienischer Bauerntanz^DE^1895^Max Skladanowsky^0
+The Arrival of a Train-12^The Arrival of a Train^US^1896^Auguste Lumière^0
+Carmencita-1^Carmencita^US^1894^William K.L. Dickson^0
+Baignade en mer-23^Baignade en mer^FR^1895^Louis Lumière^0
+The Derby 1895-20^The Derby 1895^GB^1895^Birt Acres^0
+Leaving the Factory-10^Leaving the Factory^US^1895^Louis Lumière^0
+Miss Jerry-9^Miss Jerry^HU^1894^Alexander Black^0
+Das boxende Känguruh-18^Das boxende Känguruh^DE^1895^Max Skladanowsky^0
+tHd Messers. Lumière at Cards-27^tHd Messers. Lumière at Cards^US^1896^Louis Lumière^0
+The Photographical Congress Arrives in Lyon-13^The Photographical Congress Arrives in Lyon^US^1895^Louis Lumière^0
+Edison Kinetoscopic Record of a Sneeze-8^Edison Kinetoscopic Record of a Sneeze^US^1894^William K.L. Dickson^0
+Boat Leaving the Port-16^Boat Leaving the Port^US^1895^Louis Lumière^0
+Boat Leaving the Port-148^Boat Leaving the Port^US^1895^Louis Lumière^0
+
+(base) Arneshs-iMac:src arneshregmi$ ./a.out
+*****Welcome to Movies Database      *****
+*****Abdullah, Arnesh, Sunho, Ulysses*****
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+l
+
+Input file name:Movies_Synonymns.txt
+File loaded
+
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+a
+
+All Movies In List
+==================
+Akrobatisches Potpourri
+Autour d'une cabine
+Baignade en mer
+Blacksmith Scene
+Blacksmithing Scene
+Boat Leaving the Port
+Boat Leaving the Port
+Carmencita
+Chinese Opium Den
+Corbett and Courtney Before the Kinetograph
+Das boxende Känguruh
+Edison Kinetoscopic Record of a Sneeze
+Italienischer Bauerntanz
+Le clown et ses chiens
+Leaving the Factory
+Miss Jerry
+Opening of the Kiel Canal
+Pauvre Pierrot
+The Arrival of a Train
+The Clown Barber
+The Derby 1895
+The Messers. Lumière at Cards
+The Oxford and Cambridge University Boat Race
+The Photographical Congress Arrives in Lyon
+The Waterer Watered
+Un bon bock
+tHd Messers. Lumière at Cards
+
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+e
+(base) Arneshs-iMac:src arneshregmi
+

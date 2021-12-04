@@ -1,0 +1,75 @@
+(base) Arneshs-iMac:src arneshregmi$ ./a.out
+*****Welcome to Movies Database      *****
+*****Abdullah, Arnesh, Sunho, Ulysses*****
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+l
+
+Input file name:Movies_Synonymns.txt
+File loaded
+
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+a
+
+All Movies In List
+==================
+Akrobatisches Potpourri
+Autour d'une cabine
+Baignade en mer
+Blacksmith Scene
+Blacksmithing Scene
+Boat Leaving the Port
+Boat Leaving the Port
+Carmencita
+Chinese Opium Den
+Corbett and Courtney Before the Kinetograph
+Das boxende Känguruh
+Edison Kinetoscopic Record of a Sneeze
+Italienischer Bauerntanz
+Le clown et ses chiens
+Leaving the Factory
+Miss Jerry
+Opening of the Kiel Canal
+Pauvre Pierrot
+The Arrival of a Train
+The Clown Barber
+The Derby 1895
+The Messers. Lumière at Cards
+The Oxford and Cambridge University Boat Race
+The Photographical Congress Arrives in Lyon
+The Waterer Watered
+Un bon bock
+tHd Messers. Lumière at Cards
+
+Load file: L/l
+Search movie by primary key: P/p
+Delete by primary key: D/d
+List all Movies: a
+Search movie by secondary key: s
+H -- for help: H
+Add new Movie: A
+Save Movie Database to a file: S
+Show Table Statistics: I
+Undo movie deletion: u
+Exit: e
+
+

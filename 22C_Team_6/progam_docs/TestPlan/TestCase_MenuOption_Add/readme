@@ -1,0 +1,8 @@
+This test case demonstrates the Add Option the program
+The Add functionality is executed with menu option 'A'
+
+This test case consists of:
+   TC1: Add a Movie with a unique Primary Key => Appended to Database 
+   TC2: Add a Movie with a replicated Primary Key => Not Appended to Database
+   TC3: Add movies(synonymns) with unique Primary Key but same Secondary Key => Append to Database
+

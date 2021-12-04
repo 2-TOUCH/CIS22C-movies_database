@@ -1,0 +1,6 @@
+This test case demonstrates the Show Statistics option of the program.
+The Show Statistics option is executed with menu option 'I'.
+
+This test case consists of:
+   TC1: Load file/Build Database without duplication  => Statistics should not show collision.
+   TC2: Load file/Build Database with duplication => Statistics should number of collision.  

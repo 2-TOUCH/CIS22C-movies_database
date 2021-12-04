@@ -1,0 +1,7 @@
+This test case demonstrates the exit feature of the program.
+The program exits upon receiving the 'e' menu Option.
+
+This test case consists of:
+   TC1. Entering Menu Option 'e' => Exit Program 
+ 
+
